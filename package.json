@@ -2,7 +2,7 @@
   "name": "properon",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://TMiguelT.github.io/improperon",
+  "homepage": "https://TMiguelT.github.io/Improperon",
   "dependencies": {
     "@gmod/gff": "^1.1.2",
     "@material-ui/core": "^3.9.3",
