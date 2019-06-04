@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/improperon/static/css/main.2cce8147.chunk.css",
-    "main.js": "/improperon/static/js/main.920f7ba5.chunk.js",
-    "main.js.map": "/improperon/static/js/main.920f7ba5.chunk.js.map",
-    "runtime~main.js": "/improperon/static/js/runtime~main.de10c3e3.js",
-    "runtime~main.js.map": "/improperon/static/js/runtime~main.de10c3e3.js.map",
-    "static/js/2.7b116a21.chunk.js": "/improperon/static/js/2.7b116a21.chunk.js",
-    "static/js/2.7b116a21.chunk.js.map": "/improperon/static/js/2.7b116a21.chunk.js.map",
-    "index.html": "/improperon/index.html",
-    "precache-manifest.e5bb0998023ef2b5347b8c4f401fb2c7.js": "/improperon/precache-manifest.e5bb0998023ef2b5347b8c4f401fb2c7.js",
-    "service-worker.js": "/improperon/service-worker.js",
-    "static/css/main.2cce8147.chunk.css.map": "/improperon/static/css/main.2cce8147.chunk.css.map"
+    "main.css": "/Improperon/static/css/main.2cce8147.chunk.css",
+    "main.js": "/Improperon/static/js/main.e86b5f2e.chunk.js",
+    "main.js.map": "/Improperon/static/js/main.e86b5f2e.chunk.js.map",
+    "runtime~main.js": "/Improperon/static/js/runtime~main.fcc68b01.js",
+    "runtime~main.js.map": "/Improperon/static/js/runtime~main.fcc68b01.js.map",
+    "static/js/2.7b116a21.chunk.js": "/Improperon/static/js/2.7b116a21.chunk.js",
+    "static/js/2.7b116a21.chunk.js.map": "/Improperon/static/js/2.7b116a21.chunk.js.map",
+    "index.html": "/Improperon/index.html",
+    "precache-manifest.94144a26e5a8eb6b778b2cc736b4b03b.js": "/Improperon/precache-manifest.94144a26e5a8eb6b778b2cc736b4b03b.js",
+    "service-worker.js": "/Improperon/service-worker.js",
+    "static/css/main.2cce8147.chunk.css.map": "/Improperon/static/css/main.2cce8147.chunk.css.map"
   }
 }
