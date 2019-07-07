@@ -11,12 +11,15 @@
     "fsa-redux-thunk": "^2.3.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-dropzone": "^10.1.5",
     "react-redux": "^7.1.0",
     "react-scripts": "3.0.1",
     "redux": "^4.0.1",
     "redux-actions": "^2.6.5",
+    "redux-form": "^8.2.4",
     "redux-thunk": "^2.3.0",
-    "scribl": "file:../../../../../home/michael/Programming/Scribl"
+    "scribl": "file:../../../../../home/michael/Programming/Scribl",
+    "svg-path-generator": "^1.1.0"
   },
   "scripts": {
     "predeploy": "npm run build",

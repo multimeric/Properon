@@ -9,41 +9,47 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import PropTypes from 'prop-types';
+import {reduxForm, getFormValues} from 'redux-form';
+import {useSelector} from 'react-redux';
 
-export default function AnnotationUpload(props) {
-    const [filename, setFilename] = useState('');
+import {readContigs} from '../actions';
 
-    function fileChange(e) {
-        const file = e.target.files[0];
-        setFilename(file.name);
-        props.onChange(file);
+import FileInput from './InputFile';
+
+const AnnotationUpload = reduxForm({
+    form: 'annotations',
+    destroyOnUnmount: false,
+    onChange(values, dispatch, props, previous) {
+        dispatch(readContigs());
+    }
+})(props => {
+    const currentState = useSelector(getFormValues(props.form));
+    let label = null;
+    if (currentState) {
+        const gff = currentState.annotations[0];
+        label = (
+            <div>
+                {gff.name}
+            </div>
+        );
     }
 
     return (
         <Grid container justify='center' alignItems='center'>
             <form>
-                <FormControl margin="normal" required fullWidth>
-                    <input
-                        style={{
-                            display: 'none'
-                        }}
-                        accept=".gff,.gtf,.gff3"
-                        multiple
-                        type="file"
-                        id="file"
-                        onChange={fileChange}
-                    />
-                    <label htmlFor="file">
-                        <Button variant='outlined' component="span">
-                            Upload GFF
-                        </Button>
-                    </label>
-
-                    <FormHelperText>{filename}</FormHelperText>
-                </FormControl>
+                <FileInput
+                    name="annotations"
+                    dropzone_options={{
+                        multiple: false,
+                        accept: 'image/*'
+                    }}
+                />
+                {label}
             </form>
         </Grid>
     );
-}
+});
+
+export default AnnotationUpload;
 
 AnnotationUpload.propTypes = {};

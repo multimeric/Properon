@@ -3,22 +3,20 @@ import * as actions from '../actions';
 
 export const initialState = {
     tracks: [],
-    contigs: [],
-    width: 500,
-    gff: null,
+    contigs: []
 };
 
 export const reducer = handleActions({
-    [actions.setFile]: (state, {payload: gff}) => {
-        return {
-            ...state,
-            gff: gff
-        };
-    },
     [actions.setContigs]: (state, {payload: contigs}) => {
         return {
             ...state,
             contigs: contigs
+        };
+    },
+    [actions.setTracks]: (state, {payload: tracks}) => {
+        return {
+            ...state,
+            tracks: tracks
         };
     },
 }, initialState);

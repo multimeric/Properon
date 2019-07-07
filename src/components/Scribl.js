@@ -15,6 +15,7 @@ export default function Scribl(props)  {
         const context = canvas.getContext('2d');
         context.clearRect(0, 0, canvas.width, canvas.height);
         const scribl = new ScriblCanvas.Scribl(canvas, width);
+        scribl.glyph.text.color = 'white';
         for (const glyphs of tracks){
             const track = scribl.addTrack();
             for (const glyph of glyphs){

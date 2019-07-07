@@ -13,7 +13,7 @@ import FileReaderStream from 'filereader-stream';
 import gff from '@gmod/gff';
 import * as ScriblCanvas from 'scribl';
 
-import Scribl from './Scribl';
+import Scribl from './components/Scribl';
 import OperonStepper from './components/Stepper';
 import {Provider} from 'react-redux';
 import store from './Store';

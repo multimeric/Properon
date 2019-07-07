@@ -12,11 +12,24 @@ import Grid from '@material-ui/core/Grid';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import {useSelector, useDispatch} from 'react-redux';
+import {Field, reduxForm, isValid, getFormValues} from 'redux-form';
 
 import AnnotationUpload from './AnnotationUpload';
 import PlotSettings from './PlotSettings';
+import Scribl from './Scribl'
+import GenePlot from './GenePlot';
 
-import {uploadFile} from '../actions';
+/**
+ * Hook that returns true if the form exists and is valid
+ */
+function useFormValid(form) {
+    return useSelector(state => {
+            const formValid = isValid(form)(state);
+            const formNotEmpty = getFormValues(form)(state) !== undefined;
+            return formValid && formNotEmpty;
+        }
+    );
+}
 
 /**
  * Coordinates the progress through the plot wizard
@@ -28,40 +41,83 @@ export default function OperonStepper(props) {
 
     // Local state
     const [activeStep, setActiveStep] = React.useState(0);
+    const settingsValid = useFormValid('plotSettings');
+    const settings= useSelector(getFormValues('plotSettings'));
+    const annotationValid = useFormValid('annotations');
 
-    const NextButton = (
-        <Button onClick={e => setActiveStep(activeStep + 1)}>
-            Next
-        </Button>
-    );
-    const BackButton = (
-        <Button onClick={e => setActiveStep(activeStep - 1)}>
-            Back
-        </Button>
-    );
-
-    let stepComponent, backButton, nextButton;
+    let stepComponent, showNext, showBack, formValid;
     switch (activeStep) {
         case 0:
-            stepComponent = <AnnotationUpload
-                value={state.gff}
-                onChange={file => dispatch(uploadFile({gff: file}))}
-            />;
-            nextButton = NextButton;
-            backButton = null;
+            stepComponent = <AnnotationUpload/>;
+            formValid = annotationValid;
+            showNext = true;
+            showBack = false;
             break;
         case 1:
             stepComponent = <PlotSettings
-                contigs={state.contigs}
+                contigs={state.data.contigs}
             />;
-            nextButton = NextButton;
-            backButton = BackButton;
+            showNext = showBack = true;
+            formValid = settingsValid;
             break;
         case 2:
-            stepComponent = null;
-            nextButton = null;
-            backButton = BackButton;
+            stepComponent = <GenePlot
+                // start={settings.coordsStart}
+                // end={settings.coordsEnd}
+                // genes={state.data.lanes}
+                start={0}
+                end={100}
+                rounded={true}
+                genes={[
+                    {
+                        start:0,
+                        end: 20,
+                        color: 'green',
+                        text: "One"
+                    },
+                    {
+                        start:50,
+                        end: 80,
+                        color: 'red',
+                        text: "Two"
+                    },
+                    {
+                        start:80,
+                        end: 90,
+                        color: 'blue',
+                        text: "Three"
+                    },
+                ]}
+            />;
+            // stepComponent = <Scribl
+            //     width={500}
+            //     tracks={state.data.tracks}
+            // />;
+            showNext = false;
+            showBack = true;
             break;
+    }
+
+    let nextButton, backButton;
+    if (showNext) {
+        nextButton = (
+            <Button disabled={!formValid} onClick={e => setActiveStep(activeStep + 1)}>
+                Next
+            </Button>
+        );
+    }
+    else {
+        nextButton = null;
+    }
+    if (showBack) {
+        backButton = (
+            <Button onClick={e => setActiveStep(activeStep - 1)}>
+                Back
+            </Button>
+        );
+    }
+    else {
+        backButton = null;
     }
 
     return (
@@ -75,10 +131,10 @@ export default function OperonStepper(props) {
             }}>
                 <CardContent>
                     <Stepper activeStep={activeStep}>
-                        <Step key="annotation">
+                        <Step completed={annotationValid} key="annotation">
                             <StepLabel>Annotation</StepLabel>
                         </Step>
-                        <Step key="settings">
+                        <Step completed={settingsValid} key="settings">
                             <StepLabel>Settings</StepLabel>
                         </Step>
                         <Step key="plot">
