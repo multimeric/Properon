@@ -2,7 +2,7 @@ import {handleActions} from 'redux-actions';
 import * as actions from '../actions';
 
 export const initialState = {
-    tracks: [],
+    genes: [],
     contigs: []
 };
 
@@ -13,26 +13,12 @@ export const reducer = handleActions({
             contigs: contigs
         };
     },
-    [actions.setTracks]: (state, {payload: tracks}) => {
+    [actions.setGenes]: (state, {payload: genes}) => {
         return {
             ...state,
-            tracks: tracks
+            genes: genes
         };
     },
 }, initialState);
 
 export default reducer;
-
-// export default function reducer(state = initialState, action) {
-//     switch (action.type) {
-//         case 'uploadFile':
-//             return {
-//                 ...state,
-//                 gff: action.gff
-//             };
-//         case 'setOptions':
-//             break;
-//         default:
-//             return state;
-//     }
-// }

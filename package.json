@@ -6,9 +6,13 @@
   "dependencies": {
     "@gmod/gff": "^1.1.2",
     "@material-ui/core": "^3.9.3",
+    "bignumber.js": "^9.0.0",
+    "file-saver": "^2.0.2",
     "filereader-stream": "^2.0.0",
     "formik": "^1.5.7",
+    "fraction.js": "^4.0.12",
     "fsa-redux-thunk": "^2.3.0",
+    "mathjs": "^6.0.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-dropzone": "^10.1.5",

@@ -90,10 +90,10 @@ const PlotSettings = reduxForm({
                     }/>
                 </FormControl>
                 <div>
-                    <Field label="Start coordinate" name='coordsStart' component={renderTextField}/>
+                    <Field label="Start coordinate" name='coordsStart' component={renderTextField} type={'number'} parse={Number}/>
                 </div>
                 <div>
-                    <Field label="End coordinate" name='coordsEnd' component={renderTextField}/>
+                    <Field label="End coordinate" name='coordsEnd' component={renderTextField} type={'number'} parse={Number}/>
                 </div>
             </form>
         </Grid>

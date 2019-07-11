@@ -16,8 +16,9 @@ import {Field, reduxForm, isValid, getFormValues} from 'redux-form';
 
 import AnnotationUpload from './AnnotationUpload';
 import PlotSettings from './PlotSettings';
-import Scribl from './Scribl'
+import Scribl from './Scribl';
 import GenePlot from './GenePlot';
+import DisplaySettings from './DisplaySettings';
 
 /**
  * Hook that returns true if the form exists and is valid
@@ -42,7 +43,7 @@ export default function OperonStepper(props) {
     // Local state
     const [activeStep, setActiveStep] = React.useState(0);
     const settingsValid = useFormValid('plotSettings');
-    const settings= useSelector(getFormValues('plotSettings'));
+    const settings = useSelector(getFormValues('plotSettings'));
     const annotationValid = useFormValid('annotations');
 
     let stepComponent, showNext, showBack, formValid;
@@ -61,34 +62,25 @@ export default function OperonStepper(props) {
             formValid = settingsValid;
             break;
         case 2:
-            stepComponent = <GenePlot
-                // start={settings.coordsStart}
-                // end={settings.coordsEnd}
-                // genes={state.data.lanes}
-                start={0}
-                end={100}
-                rounded={true}
-                genes={[
-                    {
-                        start:0,
-                        end: 20,
-                        color: 'green',
-                        text: "One"
-                    },
-                    {
-                        start:50,
-                        end: 80,
-                        color: 'red',
-                        text: "Two"
-                    },
-                    {
-                        start:80,
-                        end: 90,
-                        color: 'blue',
-                        text: "Three"
-                    },
-                ]}
-            />;
+            stepComponent = (
+                <div>
+                    <GenePlot
+                        // start={settings.coordsStart}
+                        // end={settings.coordsEnd}
+                        // genes={state.data.lanes}
+                        start={settings.coordsStart}
+                        end={settings.coordsEnd}
+                        rounded={true}
+                        fontSize={1}
+                        genes={state.data.genes}
+                        scaleProps={{
+                            minorTick: 100,
+                            majorTick: 1000,
+                        }}
+                    />
+                    {/*<DisplaySettings/>*/}
+                </div>
+            );
             // stepComponent = <Scribl
             //     width={500}
             //     tracks={state.data.tracks}
@@ -123,7 +115,8 @@ export default function OperonStepper(props) {
     return (
         <Grid
             style={{
-                maxWidth: '600px'
+                maxWidth: '1000px',
+                width: '100%'
             }}
             item>
             <Card style={{

@@ -1,12 +1,14 @@
 import {createActions} from 'redux-actions';
 import FileReaderStream from 'filereader-stream';
 import gff from '@gmod/gff';
-import {getFormValues, isValid} from 'redux-form'
-import {Track, BlockArrow} from 'scribl'
+import {getFormValues, isValid} from 'redux-form';
+import {Lava} from './colours';
 
-export const {setContigs, setTracks} = createActions({
+const geneColours = new Lava();
+
+export const {setContigs, setGenes} = createActions({
     SET_CONTIGS: undefined,
-    SET_TRACKS: undefined
+    SET_GENES: undefined
 });
 
 export const {readContigs, readGenes} = createActions({
@@ -40,9 +42,8 @@ export const {readContigs, readGenes} = createActions({
 
             if (!settingsValid)
                 return;
-            
-            const track = [];
-            const tracks = [track];
+
+            const genes = [];
             FileReaderStream(annotations)
                 .pipe(gff.parseStream({
                     parseFeatures: true,
@@ -50,21 +51,29 @@ export const {readContigs, readGenes} = createActions({
                     parseSequences: false
                 }))
                 .on('data', features => {
-                    for (const feature of features){
+                    for (const feature of features) {
                         const name = feature.attributes.Name[0];
-                        if (feature.type === 'gene' && feature.start <= settings.coordsEnd && feature.end >= settings.coordsStart){
-                            track.push(new BlockArrow(
-                                name,
-                                feature.start,
-                                feature.end - feature.start
-                            ));
+                        if (
+                            feature.type === 'gene'
+                            && feature.start <= settings.coordsEnd
+                            && feature.end <= settings.coordsEnd
+                            && feature.start >= settings.coordsStart
+                            && feature.end >= settings.coordsStart
+                        ) {
+                            genes.push({
+                                start: feature.start,
+                                end: feature.end,
+                                text: name,
+                                strand: feature.strand,
+                                color: geneColours.getColour()
+                            });
                         }
                     }
                 })
                 .on('end', () => {
-                    dispatch(setTracks(tracks));
+                    dispatch(setGenes(genes));
                 });
-        }
+        };
     }
 });
 

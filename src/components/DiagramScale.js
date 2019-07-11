@@ -1,18 +1,13 @@
-import React from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import PropTypes from 'prop-types';
 
-/**
- * The scale a diagram, including ticks
- */
-export default function DiagramScale(props) {
-    const {color, start, end, minorTick, majorTick, yOffset, minorTickHeight, minorTickWidth, majorTickHeight, majorTickWidth, fontSize} = props;
-    // How much to scale the scale. Why don't you try to come up with a better name for this variable
-    const scaleScale = 100 / (end - start);
+function getTicks(minorTick, majorTick, valueStart, valueEnd){
+    // Start with one major tick for the start and end
     const minorTicks = [];
-    const majorTicks = [start, end];
-
-    // Calculate the ticks
-    for (let i = start; i <= end; i++) {
+    const majorTicks = [valueStart, valueEnd];
+    
+    // Calculate the other ticks
+    for (let i = valueStart; i <= valueEnd; i++) {
         if (i % majorTick === 0) {
             majorTicks.push(i);
             continue;
@@ -22,50 +17,98 @@ export default function DiagramScale(props) {
             minorTicks.push(i);
         }
     }
+    
+    return [minorTicks, majorTicks];
+}
+
+/**
+ * The scale a diagram, including ticks
+ */
+export default function DiagramScale(props) {
+    const {color, valueStart, valueEnd, xOffsetStart, xOffsetEnd, yOffsetStart, yOffsetEnd, minorTick, majorTick,  minorTickWidth, majorTickWidth, fontSize, lineWidth} = props;
+    // The range of genomic coordinates
+    const valueRange = valueEnd - valueStart;
+    // How much to scale the width, in terms of SVG units per genomic unit
+    const widthScale = (xOffsetEnd - xOffsetStart) / valueRange;
+    
+    const height = yOffsetEnd - yOffsetStart;
+    
+    // The genomic positions of each minor and major tick
+    const [minorTicks, majorTicks] = getTicks(minorTick, majorTick, valueStart, valueEnd);
+
+    // The height of the labels, in SVG units. We start by guessing it at 10, but ultimately calculate it after the 
+    // first render pass
+    const [labelSize, setLabelSize] = useState(10);
+    const labelGroup = useRef();
+    // Calculate the label height. Rerun this whenever the props change
+    useEffect(() => {
+        const dims = labelGroup.current.getBBox();
+        setLabelSize(dims.height);
+    }, [props]);
+    
+    const labelSectionHeight = 2 * labelSize;
+    const tickSectionHeight = height - labelSectionHeight;
+    const majorTickHeight = tickSectionHeight / 2;
+    const minorTickHeight = tickSectionHeight / 4;
+    const scalePos = (tickSectionHeight / 2) + labelSectionHeight;
 
     return (
         <g className="scale">
-            <line className="scale-line" stroke="black" x1={0} x2={100} y1={yOffset} y2={yOffset}/>
-            {
-                minorTicks.map(tick => {
-                    return (
-                        <line
-                            className="scale-minor-tick"
-                            x1={tick * scaleScale}
-                            x2={tick * scaleScale}
-                            y1={yOffset - minorTickHeight}
-                            y2={yOffset + minorTickHeight}
-                            stroke={color}
-                            strokeWidth={minorTickWidth}
-                        />
-                    );
-                })
-            }
-            {
-                majorTicks.map(tick => {
-                    return (
-                        <g>
+            <line className="scale-line" strokeWidth={lineWidth} stroke="black" x1={xOffsetStart} x2={xOffsetEnd}
+                  y1={scalePos} y2={scalePos}/>
+            <g className="minorTicks">
+                {
+                    minorTicks.map(tick => {
+                        const x = xOffsetStart + (tick - valueStart) * widthScale;
+                        return (
                             <line
                                 className="scale-minor-tick"
-                                x1={tick * scaleScale}
-                                x2={tick * scaleScale}
-                                y1={yOffset - majorTickHeight}
-                                y2={yOffset + majorTickHeight}
+                                x1={x}
+                                x2={x}
+                                y1={scalePos - minorTickHeight}
+                                y2={scalePos + minorTickHeight}
+                                stroke={color}
+                                strokeWidth={minorTickWidth}
+                            />
+                        );
+                    })
+                }
+            </g>
+            <g className="majorTicks">
+                {
+                    majorTicks.map(tick => {
+                        const x = xOffsetStart + (tick - valueStart) * widthScale;
+                        return (
+                            <line
+                                className="scale-minor-tick"
+                                x1={x}
+                                x2={x}
+                                y1={scalePos - majorTickHeight}
+                                y2={scalePos + majorTickHeight}
                                 stroke={color}
                                 strokeWidth={majorTickWidth}
                             />
+                        );
+                    })
+                }
+            </g>
+            <g ref={labelGroup} className="tickLabels">
+                {
+                    majorTicks.map(tick => {
+                        const x = xOffsetStart + (tick - valueStart) * widthScale;
+                        return (
                             <text
-                                x={tick * scaleScale}
-                                y={yOffset - majorTickHeight}
+                                x={x}
+                                y={yOffsetStart + labelSize}
                                 textAnchor="middle"
                                 fontSize={fontSize}
                             >
                                 {tick}
                             </text>
-                        </g>
-                    );
-                })
-            }
+                        );
+                    })
+                }
+            </g>
         </g>
     );
 }
@@ -87,19 +130,39 @@ DiagramScale.propTypes = {
     majorTick: PropTypes.number,
 
     /**
-     * The distance from the top to offset the scale
+     * The distance from the top of the component to the horizontal line
      */
-    yOffset: PropTypes.number,
+    scaleOffset: PropTypes.number,
 
     /**
      * The first point on the scale
      */
-    start: PropTypes.number,
+    valueStart: PropTypes.number,
+
+    /**
+     * Where, in the SVG coordinates, do we start the component on the x-axis
+     */
+    xOffsetStart: PropTypes.number,
+
+    /**
+     * Where, in the SVG coordinates, do we end the component on the x-axis
+     */
+    xOffsetEnd: PropTypes.number,
+
+    /**
+     * Where, in the SVG coordinates, do we start the component on the y-axis
+     */
+    yOffsetStart: PropTypes.number,
+
+    /**
+     * Where, in the SVG coordinates, do we end the component on the y-axis
+     */
+    yOffsetEnd: PropTypes.number,
 
     /**
      * The last point on the scale
      */
-    end: PropTypes.number,
+    valueEnd: PropTypes.number,
 
     /**
      * The height of a minor tick
@@ -124,19 +187,27 @@ DiagramScale.propTypes = {
     /**
      * Size of the tick font
      */
-    fontSize: PropTypes.number
+    fontSize: PropTypes.number,
+
+    /**
+     * Width of the horizontal scale line
+     */
+    lineWidth: PropTypes.number,
 };
 
 DiagramScale.defaultProps = {
     color: 'black',
     minorTick: 5,
     majorTick: 10,
-    yOffset: 0,
-    start: 0,
-    end: 100,
+    offsetStart: 0,
+    offsetEnd: 100,
+    scaleOffset: 10,
+    valueStart: 0,
+    valueEnd: 100,
     minorTickHeight: 2,
     minorTickWidth: 0.2,
     majorTickHeight: 5,
     majorTickWidth: 0.5,
-    fontSize: 3
+    fontSize: 3,
+    lineWidth: 0.1
 };
