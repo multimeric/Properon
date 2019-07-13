@@ -43,7 +43,9 @@ export default function OperonStepper(props) {
     // Local state
     const [activeStep, setActiveStep] = React.useState(0);
     const settingsValid = useFormValid('plotSettings');
+    const displaySettingsValid = useFormValid('displaySettings');
     const settings = useSelector(getFormValues('plotSettings'));
+    const displaySettings = useSelector(getFormValues('displaySettings'));
     const annotationValid = useFormValid('annotations');
 
     let stepComponent, showNext, showBack, formValid;
@@ -62,24 +64,32 @@ export default function OperonStepper(props) {
             formValid = settingsValid;
             break;
         case 2:
+            stepComponent = <DisplaySettings/>;
+            showNext = true;
+            showBack = true;
+            formValid = displaySettingsValid;
+            break;
+        case 3:
             stepComponent = (
-                <div>
-                    <GenePlot
-                        // start={settings.coordsStart}
-                        // end={settings.coordsEnd}
-                        // genes={state.data.lanes}
-                        start={settings.coordsStart}
-                        end={settings.coordsEnd}
-                        rounded={true}
-                        fontSize={1}
-                        genes={state.data.genes}
-                        scaleProps={{
-                            minorTick: 100,
-                            majorTick: 1000,
-                        }}
-                    />
-                    {/*<DisplaySettings/>*/}
-                </div>
+                <GenePlot
+                    // start={settings.coordsStart}
+                    // end={settings.coordsEnd}
+                    // genes={state.data.lanes}
+                    start={settings.coordsStart}
+                    end={settings.coordsEnd}
+                    rounded={displaySettings.rounded}
+                    fontSize={displaySettings.labelFontSize}
+                    height={displaySettings.height}
+                    width={displaySettings.width}
+                    genes={state.data.genes}
+                    pointLength={displaySettings.pointLength}
+                    scaleProps={{
+                        endTicks:displaySettings.firstLastTick,
+                        majorTick:displaySettings.majorTicks,
+                        minorTick:displaySettings.minorTicks,
+                        fontSize: displaySettings.labelFontSize
+                    }}
+                />
             );
             // stepComponent = <Scribl
             //     width={500}
@@ -128,7 +138,10 @@ export default function OperonStepper(props) {
                             <StepLabel>Annotation</StepLabel>
                         </Step>
                         <Step completed={settingsValid} key="settings">
-                            <StepLabel>Settings</StepLabel>
+                            <StepLabel>Region Settings</StepLabel>
+                        </Step>
+                        <Step completed={displaySettingsValid} key="displaySettings">
+                            <StepLabel>Display Settings</StepLabel>
                         </Step>
                         <Step key="plot">
                             <StepLabel>Plot</StepLabel>

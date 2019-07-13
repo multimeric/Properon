@@ -1,10 +1,10 @@
 import React, {useState, useRef, useEffect} from 'react';
 import PropTypes from 'prop-types';
 
-function getTicks(minorTick, majorTick, valueStart, valueEnd){
+function getTicks(minorTick, majorTick, valueStart, valueEnd, endTicks){
     // Start with one major tick for the start and end
     const minorTicks = [];
-    const majorTicks = [valueStart, valueEnd];
+    const majorTicks = endTicks ? [valueStart, valueEnd] : [];
     
     // Calculate the other ticks
     for (let i = valueStart; i <= valueEnd; i++) {
@@ -25,7 +25,7 @@ function getTicks(minorTick, majorTick, valueStart, valueEnd){
  * The scale a diagram, including ticks
  */
 export default function DiagramScale(props) {
-    const {color, valueStart, valueEnd, xOffsetStart, xOffsetEnd, yOffsetStart, yOffsetEnd, minorTick, majorTick,  minorTickWidth, majorTickWidth, fontSize, lineWidth} = props;
+    const {color, valueStart, valueEnd, xOffsetStart, xOffsetEnd, yOffsetStart, yOffsetEnd, minorTick, majorTick,  minorTickWidth, majorTickWidth, fontSize, lineWidth, endTicks} = props;
     // The range of genomic coordinates
     const valueRange = valueEnd - valueStart;
     // How much to scale the width, in terms of SVG units per genomic unit
@@ -34,7 +34,7 @@ export default function DiagramScale(props) {
     const height = yOffsetEnd - yOffsetStart;
     
     // The genomic positions of each minor and major tick
-    const [minorTicks, majorTicks] = getTicks(minorTick, majorTick, valueStart, valueEnd);
+    const [minorTicks, majorTicks] = getTicks(minorTick, majorTick, valueStart, valueEnd, endTicks);
 
     // The height of the labels, in SVG units. We start by guessing it at 10, but ultimately calculate it after the 
     // first render pass
@@ -193,12 +193,17 @@ DiagramScale.propTypes = {
      * Width of the horizontal scale line
      */
     lineWidth: PropTypes.number,
+
+    /**
+     * Whether or not to add a major tick on the first and last point of the scale
+     */
+    endTicks: PropTypes.bool
 };
 
 DiagramScale.defaultProps = {
     color: 'black',
-    minorTick: 5,
-    majorTick: 10,
+    minorTick: 100,
+    majorTick: 1000,
     offsetStart: 0,
     offsetEnd: 100,
     scaleOffset: 10,
@@ -209,5 +214,6 @@ DiagramScale.defaultProps = {
     majorTickHeight: 5,
     majorTickWidth: 0.5,
     fontSize: 3,
-    lineWidth: 0.1
+    lineWidth: 0.1,
+    endTicks: true
 };

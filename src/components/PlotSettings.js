@@ -41,10 +41,10 @@ const PlotSettings = reduxForm({
         if (!values.contig)
             errors.contig = 'required';
 
-        if (!values.coordsStart)
+        if (typeof(values.coordsStart) !== 'number')
             errors.coordsStart = 'required';
 
-        if (!values.coordsEnd)
+        if (typeof(values.coordsEnd) !== 'number')
             errors.coordsEnd = 'required';
         else if (values.coordsEnd <= values.coordsStart)
             errors.coordsEnd = 'Can\'t be lower than the start coordinate';

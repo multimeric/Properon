@@ -9,21 +9,17 @@ import Fraction from 'fraction.js';
 import DiagramScale from './DiagramScale';
 
 export default function GenePlot(props) {
-    const {start, end, genes, scaleProps, rounded, fontSize} = props;
-    
+    const {start, end, width, height, padding, pointLength, scaleProportion, genes, scaleProps, rounded, fontSize} = props;
+
     // Keep track of the SVG element, so we can export it
     const svgRef = useRef();
 
-    // Dimensions of the SVG, in SVG units
-    const WIDTH = 100;
-    const HEIGHT = 15;
-    
     // Number we subtract from the start and end of the SVG as padding, in SVG units
-    const X_PADDING = 0.1 * WIDTH;
-    
+    const X_PADDING = padding * width;
+
     // How long is the area we can actually draw in, in SVG units
-    const displayLength = WIDTH - (2 * X_PADDING);
-    
+    const displayLength = width - (2 * X_PADDING);
+
     // The amount of genomic units we need to fit into the SVG
     const valueLength = end - start;
 
@@ -31,18 +27,18 @@ export default function GenePlot(props) {
     const widthScale = Fraction(displayLength).div(valueLength);
 
     // The height of each tick, in SVG units
-    const MAJOR_TICK = 0.05 * HEIGHT;
-    const MINOR_TICK = 0.02 * HEIGHT;
-    
+    const MAJOR_TICK = 0.05 * height;
+    const MINOR_TICK = 0.02 * height;
+
     // 30% of the plot is the scale, and 70% is the gene
-    const SCALE_HEIGHT = 0.3 * HEIGHT;
-    const GENE_HEIGHT = 0.7 * HEIGHT;
+    const SCALE_HEIGHT = scaleProportion * height;
+    const GENE_HEIGHT = (1 - scaleProportion) * height;
 
     // The length of the pointy bit of the gene symbol, in SVG units
-    const POINT_LENGTH = 0.1 * WIDTH;
+    const POINT_LENGTH = pointLength * width;
     const TEXT_COLOR = 'white';
 
-    const viewBox = `0 0 ${WIDTH} ${HEIGHT}`;
+    const viewBox = `0 0 ${width} ${height}`;
     return (
         <Grid direction={'row'} container justify={'center'}>
             <Grid direction={'row'} xs={12} justify={'center'} item>
@@ -111,12 +107,20 @@ export default function GenePlot(props) {
                             path.bezierCurveTo(...coords.c, ...coords.d);
                         else
                             path.lineTo(...coords.d);
-                        if (rounded)
-                            path.bezierCurveTo(...coords.e, ...coords.f);
-                        else
-                            path.lineTo(...coords.f);
-                        if (!triangle)
+
+                        if (!triangle) {
+                            if (rounded)
+                                path.bezierCurveTo(...coords.e, ...coords.f);
+                            else
+                                path.lineTo(...coords.f);
                             path.lineTo(...coords.g);
+                        }
+                        else{
+                            if (rounded)
+                                path.bezierCurveTo(...coords.e, ...coords.g);
+                            else
+                                path.lineTo(...coords.g);
+                        }
                         path.lineTo(...coords.a);
 
                         return (
@@ -143,13 +147,71 @@ export default function GenePlot(props) {
 }
 
 GenePlot.propTypes = {
+    /**
+     * Where to start the plot, in genomic coordinates
+     */
     start: PropTypes.number,
+
+    /**
+     * Where to end the plot, in genomic coordinates
+     */
     end: PropTypes.number,
-    
+
+    /**
+     * A dictionary of props to pass into the <DiagramScale/>
+     */
     scaleProps: PropTypes.object,
-    
+
+    /**
+     * Font size for the gene labels
+     */
     fontSize: PropTypes.number,
 
-    // Each gene has {start, end, color, text}
-    genes: PropTypes.array
+    /**
+     * Array of genes to plot
+     * Each gene has {start, end, color, text}
+     */
+    genes: PropTypes.array,
+
+    /**
+     * Width of the entire plot, in HTML units
+     */
+    width: PropTypes.number,
+
+    /**
+     * Height of the entire plot, in HTML units
+     */
+    height: PropTypes.number,
+
+    /**
+     * The amount of space to leave either side of the scale, but still inside the SVG, as a proportion of the width.
+     * This should be a number between 0 and 1
+     */
+    padding: PropTypes.number,
+
+    /**
+     * How early to start curving the gene polygons in to a point, as a proportion of width. Must be between 0 and 1
+     */
+    pointLength: PropTypes.number,
+
+    /**
+     * The proportion of the whole component devoted to the scale, must be a number between 0 and 1
+     */
+    scaleProportion: PropTypes.number,
+
+    /**
+     * Whether or not to round the ends of the gene polygons
+     */
+    rounded: PropTypes.bool
+};
+
+GenePlot.defaultProps = {
+    scaleProps: {},
+    fontSize: 1,
+    width: 100,
+    height: 15,
+    padding: 0.1,
+    pointLength: 0.5,
+    scaleProportion: 0.3,
+    rounded: true
 };
