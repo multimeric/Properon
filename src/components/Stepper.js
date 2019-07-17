@@ -87,6 +87,8 @@ export default function OperonStepper(props) {
                         endTicks:displaySettings.firstLastTick,
                         majorTick:displaySettings.majorTicks,
                         minorTick:displaySettings.minorTicks,
+                        minorTickHeight: displaySettings.minorTickHeight,
+                        majorTickHeight: displaySettings.majorTickHeight,
                         fontSize: displaySettings.labelFontSize
                     }}
                 />

@@ -1,0 +1,9 @@
+Diagonal gene labels
+Line through genes
+Removable scale
+Include stylesheet and font in SVG download
+Toggle for strand of gene, in the gene settings
+Add offset for ticks
+Optional stroke around genes
+All settings on one page using collapsibles
+Hook-based components for transformations: provide element with offset and size proportions (ie, this element has 3 length and this element has 7 length means a 3:7 ratio), then a hook takes these numbers and calculates a scaling and offset value. This can then be accessed using a hook that gives you a transform function. Possibly the parent has to first check all children to work out the sum of proportions before it can pass down the scale function as a prop or maybe as a context.

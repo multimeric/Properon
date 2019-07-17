@@ -83,6 +83,8 @@ const PlotSettings = reduxForm({
         firstLastTick: DiagramScale.defaultProps.endTicks,
         majorTicks: DiagramScale.defaultProps.majorTick,
         minorTicks: DiagramScale.defaultProps.minorTick,
+        minorTickHeight: DiagramScale.defaultProps.minorTickHeight,
+        majorTickHeight: DiagramScale.defaultProps.majorTickHeight,
         rounded: GenePlot.defaultProps.rounded,
         width: GenePlot.defaultProps.width,
         height: GenePlot.defaultProps.height,

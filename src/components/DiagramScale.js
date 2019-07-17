@@ -1,11 +1,11 @@
 import React, {useState, useRef, useEffect} from 'react';
 import PropTypes from 'prop-types';
 
-function getTicks(minorTick, majorTick, valueStart, valueEnd, endTicks){
+function getTicks(minorTick, majorTick, valueStart, valueEnd, endTicks) {
     // Start with one major tick for the start and end
     const minorTicks = [];
     const majorTicks = endTicks ? [valueStart, valueEnd] : [];
-    
+
     // Calculate the other ticks
     for (let i = valueStart; i <= valueEnd; i++) {
         if (i % majorTick === 0) {
@@ -17,7 +17,7 @@ function getTicks(minorTick, majorTick, valueStart, valueEnd, endTicks){
             minorTicks.push(i);
         }
     }
-    
+
     return [minorTicks, majorTicks];
 }
 
@@ -25,14 +25,12 @@ function getTicks(minorTick, majorTick, valueStart, valueEnd, endTicks){
  * The scale a diagram, including ticks
  */
 export default function DiagramScale(props) {
-    const {color, valueStart, valueEnd, xOffsetStart, xOffsetEnd, yOffsetStart, yOffsetEnd, minorTick, majorTick,  minorTickWidth, majorTickWidth, fontSize, lineWidth, endTicks} = props;
+    const {reportHeight, color, valueStart, valueEnd, xOffsetStart, xOffsetEnd, yOffset, minorTick, majorTick, minorTickHeight, majorTickHeight, minorTickWidth, majorTickWidth, fontSize, lineWidth, endTicks} = props;
     // The range of genomic coordinates
     const valueRange = valueEnd - valueStart;
     // How much to scale the width, in terms of SVG units per genomic unit
     const widthScale = (xOffsetEnd - xOffsetStart) / valueRange;
-    
-    const height = yOffsetEnd - yOffsetStart;
-    
+
     // The genomic positions of each minor and major tick
     const [minorTicks, majorTicks] = getTicks(minorTick, majorTick, valueStart, valueEnd, endTicks);
 
@@ -45,17 +43,22 @@ export default function DiagramScale(props) {
         const dims = labelGroup.current.getBBox();
         setLabelSize(dims.height);
     }, [props]);
-    
-    const labelSectionHeight = 2 * labelSize;
-    const tickSectionHeight = height - labelSectionHeight;
-    const majorTickHeight = tickSectionHeight / 2;
-    const minorTickHeight = tickSectionHeight / 4;
-    const scalePos = (tickSectionHeight / 2) + labelSectionHeight;
+
+    const lineHeight = yOffset + labelSize + majorTickHeight;
+    reportHeight(lineHeight + majorTickHeight);
 
     return (
         <g className="scale">
-            <line className="scale-line" strokeWidth={lineWidth} stroke="black" x1={xOffsetStart} x2={xOffsetEnd}
-                  y1={scalePos} y2={scalePos}/>
+            <line
+                className="scale-line"
+                strokeWidth={lineWidth}
+                stroke="black"
+                x1={xOffsetStart}
+                x2={xOffsetEnd}
+                y1={lineHeight}
+                y2={lineHeight}
+            />
+
             <g className="minorTicks">
                 {
                     minorTicks.map(tick => {
@@ -65,8 +68,8 @@ export default function DiagramScale(props) {
                                 className="scale-minor-tick"
                                 x1={x}
                                 x2={x}
-                                y1={scalePos - minorTickHeight}
-                                y2={scalePos + minorTickHeight}
+                                y1={lineHeight - minorTickHeight}
+                                y2={lineHeight + minorTickHeight}
                                 stroke={color}
                                 strokeWidth={minorTickWidth}
                             />
@@ -83,8 +86,8 @@ export default function DiagramScale(props) {
                                 className="scale-minor-tick"
                                 x1={x}
                                 x2={x}
-                                y1={scalePos - majorTickHeight}
-                                y2={scalePos + majorTickHeight}
+                                y1={lineHeight - majorTickHeight}
+                                y2={lineHeight + majorTickHeight}
                                 stroke={color}
                                 strokeWidth={majorTickWidth}
                             />
@@ -99,7 +102,7 @@ export default function DiagramScale(props) {
                         return (
                             <text
                                 x={x}
-                                y={yOffsetStart + labelSize}
+                                y={yOffset + labelSize}
                                 textAnchor="middle"
                                 fontSize={fontSize}
                             >
@@ -209,11 +212,11 @@ DiagramScale.defaultProps = {
     scaleOffset: 10,
     valueStart: 0,
     valueEnd: 100,
-    minorTickHeight: 2,
-    minorTickWidth: 0.2,
-    majorTickHeight: 5,
-    majorTickWidth: 0.5,
-    fontSize: 3,
-    lineWidth: 0.1,
+    minorTickHeight: 5,
+    minorTickWidth: 1,
+    majorTickHeight: 10,
+    majorTickWidth: 2,
+    fontSize: 10,
+    lineWidth: 2,
     endTicks: true
 };

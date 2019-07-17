@@ -6,9 +6,16 @@ import {Lava} from './colours';
 
 const geneColours = new Lava();
 
-export const {setContigs, setGenes} = createActions({
+export const {setContigs, setGenes, updateSettings, updatePosition} = createActions({
     SET_CONTIGS: undefined,
-    SET_GENES: undefined
+    SET_GENES: undefined,
+    UPDATE_SETTINGS: undefined,
+    UPDATE_POSITION: payload => {
+        // When the position is updated, we need to re-read the genes as well as update the store
+        return (dispatch, getState) => {
+            dispatch(readContigs, payload);
+        }
+    },
 });
 
 export const {readContigs, readGenes} = createActions({
