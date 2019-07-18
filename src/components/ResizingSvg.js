@@ -11,7 +11,7 @@ export default function ResizingSvg(props) {
         const dims = svgRef.current.getBBox();
         setStateWidth(dims.width);
         setStateHeight(dims.height);
-    }, [props]);
+    }, );
 
     let calcHeight = height == null ? stateHeight : height;
     let calcWidth = width == null ? stateWidth : width;

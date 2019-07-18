@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import Path from 'svg-path-generator';
 import FileSaver from 'file-saver';
@@ -32,7 +32,7 @@ export default function GenePlot(props) {
     const MAJOR_TICK = 0.05;
     const MINOR_TICK = 0.02;
 
-    const TEXT_COLOR = 'white';
+    const TEXT_COLOR = 'black';
 
     function Genes(props) {
         const {yOffset, reportHeight} = props;
@@ -59,7 +59,7 @@ export default function GenePlot(props) {
                 e: [gene.end - start, yOffset + geneHeight],
                 f: [gene.end - start - pointLength, yOffset + geneHeight],
                 g: [gene.start - start, yOffset + geneHeight],
-                m: [gene.start - start + geneLength / 2, yOffset + geneHeight / 2]
+                m: [gene.start - start + geneLength / 2, yOffset + geneHeight]
             };
 
             // Scale all widths
@@ -98,8 +98,14 @@ export default function GenePlot(props) {
             return (
                 <g>
                     <path d={path.end()} fill={gene.color}/>
-                    <text x={coords.m[0]} y={coords.m[1] + 2} textAnchor="middle" fill={TEXT_COLOR}
-                          fontSize={fontSize}>{gene.text}</text>
+                    <text
+                        x={coords.m[0]}
+                        y={coords.m[1] + 2}
+                        textAnchor="end"
+                        fill={TEXT_COLOR}
+                        fontSize={fontSize}
+                        transform={`rotate(315, ${coords.m[0]}, ${coords.m[1]})`}
+                    >{gene.text}</text>
                 </g>
             );
         });
@@ -205,7 +211,7 @@ GenePlot.propTypes = {
 GenePlot.defaultProps = {
     geneHeight: 200,
     scaleProps: {},
-    fontSize: 10,
+    fontSize: 20,
     width: 800,
     // height: 15,
     padding: 0.1,
