@@ -3,9 +3,12 @@ import propTypes from 'prop-types';
 
 export default function SvgLayout(props) {
     const {mode, children} = props;
+    
+    // Filter out null children
+    const realChildren = children.filter(child => child);
 
     // Start with each child having an offset of 0
-    const [childDims, setChildDims] = useState(children.map(() => 0));
+    const [childDims, setChildDims] = useState(realChildren.map(() => 0));
 
     function setIthDims(i) {
         // Returns a function that takes a dimension and updates the state with it
@@ -34,7 +37,7 @@ export default function SvgLayout(props) {
     }, []);
 
     return <g>
-        {React.Children.map(children, (child, i) => {
+        {React.Children.map(realChildren, (child, i) => {
             const props = mode === 'width' ? {
                 xOffset: cumSums[i],
                 reportWidth: setIthDims(i)

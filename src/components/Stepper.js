@@ -83,13 +83,16 @@ export default function OperonStepper(props) {
                     width={displaySettings.width}
                     genes={state.data.genes}
                     pointLength={displaySettings.pointLength}
+                    showScale={displaySettings.showScale}
+                    centerLine={displaySettings.centerLine}
                     scaleProps={{
                         endTicks:displaySettings.firstLastTick,
                         majorTick:displaySettings.majorTicks,
                         minorTick:displaySettings.minorTicks,
                         minorTickHeight: displaySettings.minorTickHeight,
                         majorTickHeight: displaySettings.majorTickHeight,
-                        fontSize: displaySettings.labelFontSize
+                        fontSize: displaySettings.labelFontSize,
+                        
                     }}
                 />
             );

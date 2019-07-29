@@ -25,7 +25,25 @@ function getTicks(minorTick, majorTick, valueStart, valueEnd, endTicks) {
  * The scale a diagram, including ticks
  */
 export default function DiagramScale(props) {
-    const {reportHeight, color, valueStart, valueEnd, xOffsetStart, xOffsetEnd, yOffset, minorTick, majorTick, minorTickHeight, majorTickHeight, minorTickWidth, majorTickWidth, fontSize, lineWidth, endTicks} = props;
+    const {
+        reportHeight,
+        color,
+        valueStart,
+        valueEnd,
+        xOffsetStart,
+        xOffsetEnd,
+        yOffset,
+        minorTick,
+        majorTick,
+        minorTickHeight,
+        majorTickHeight,
+        minorTickWidth,
+        majorTickWidth,
+        fontSize,
+        lineWidth,
+        endTicks,
+        showScale
+    } = props;
     // The range of genomic coordinates
     const valueRange = valueEnd - valueStart;
     // How much to scale the width, in terms of SVG units per genomic unit
@@ -49,7 +67,7 @@ export default function DiagramScale(props) {
 
     return (
         <g className="scale">
-            <line
+            {showScale && <line
                 className="scale-line"
                 strokeWidth={lineWidth}
                 stroke="black"
@@ -57,7 +75,7 @@ export default function DiagramScale(props) {
                 x2={xOffsetEnd}
                 y1={lineHeight}
                 y2={lineHeight}
-            />
+            />}
 
             <g className="minorTicks">
                 {
@@ -155,12 +173,7 @@ DiagramScale.propTypes = {
     /**
      * Where, in the SVG coordinates, do we start the component on the y-axis
      */
-    yOffsetStart: PropTypes.number,
-
-    /**
-     * Where, in the SVG coordinates, do we end the component on the y-axis
-     */
-    yOffsetEnd: PropTypes.number,
+    yOffset: PropTypes.number,
 
     /**
      * The last point on the scale
@@ -200,7 +213,17 @@ DiagramScale.propTypes = {
     /**
      * Whether or not to add a major tick on the first and last point of the scale
      */
-    endTicks: PropTypes.bool
+    endTicks: PropTypes.bool,
+
+    /**
+     * Function called whenever the height of this component can be determined
+     */
+    reportHeight: PropTypes.func,
+
+    /**
+     * Whether or not to show the scale
+     */
+    showScale: PropTypes.bool
 };
 
 DiagramScale.defaultProps = {
@@ -218,5 +241,6 @@ DiagramScale.defaultProps = {
     majorTickWidth: 2,
     fontSize: 10,
     lineWidth: 2,
-    endTicks: true
+    endTicks: true,
+    showScale: true
 };

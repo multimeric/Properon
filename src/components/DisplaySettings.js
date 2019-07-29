@@ -86,6 +86,8 @@ const PlotSettings = reduxForm({
         minorTickHeight: DiagramScale.defaultProps.minorTickHeight,
         majorTickHeight: DiagramScale.defaultProps.majorTickHeight,
         rounded: GenePlot.defaultProps.rounded,
+        showScale: GenePlot.defaultProps.showScale,
+        centerLine: GenePlot.defaultProps.centerLine,
         width: GenePlot.defaultProps.width,
         height: GenePlot.defaultProps.height,
         pointLength: GenePlot.defaultProps.pointLength
@@ -95,8 +97,6 @@ const PlotSettings = reduxForm({
         dispatch(readGenes());
     }
 })(props => {
-    const {genes} = props;
-
     return (
         <Grid container justify='center' alignItems='center'>
             <Grid item md={3}>
@@ -115,6 +115,12 @@ const PlotSettings = reduxForm({
             </Grid>
             <Grid item md={3}>
                 <Field label="Start end tick" name='firstLastTick' component={renderCheckBox}/>
+            </Grid>
+            <Grid item md={3}>
+                <Field label="Show center line" name='centerLine' component={renderCheckBox}/>
+            </Grid>
+            <Grid item md={3}>
+                <Field label="Show scale" name='showScale' component={renderCheckBox}/>
             </Grid>
             <Grid item md={3}>
                 <Field label="Major ticks" name='majorTicks' component={renderTextField} type="number" parse={Number}/>
