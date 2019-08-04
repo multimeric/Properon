@@ -85,7 +85,7 @@ function GeneBlock(props) {
         else
             path.lineTo(...coords.g);
     }
-    path.lineTo(...coords.a);
+    path.close();
 
     const textX = coords.m[0];
     const textY = coords.m[1] + (textDims.height / 2);

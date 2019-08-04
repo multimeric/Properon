@@ -1,55 +1,45 @@
-import React, {useContext, useState} from 'react';
-import Input from '@material-ui/core/Input';
-import Paper from '@material-ui/core/Paper';
-import Card from '@material-ui/core/Card';
-import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
+import React, {useState} from 'react';
 import Grid from '@material-ui/core/Grid';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import PropTypes from 'prop-types';
-import {reduxForm, getFormValues} from 'redux-form';
-import {useSelector} from 'react-redux';
+import Button from '@material-ui/core/Button';
+import {useDispatch} from 'react-redux';
+import {uploadAnnotations} from '../actions';
+import {useDropzone} from 'react-dropzone';
+import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
-import {readContigs} from '../actions';
-
-import FileInput from './InputFile';
-
-const AnnotationUpload = reduxForm({
-    form: 'annotations',
-    destroyOnUnmount: false,
-    onChange(values, dispatch, props, previous) {
-        dispatch(readContigs());
-    }
-})(props => {
-    const currentState = useSelector(getFormValues(props.form));
-    let label = null;
-    if (currentState) {
-        const gff = currentState.annotations[0];
-        label = (
-            <div>
-                {gff.name}
-            </div>
-        );
-    }
+export default function AnnotationUpload(props) {
+    const {loading} = props;
+    const [filename, setFilename] = useState();
+    const dispatch = useDispatch();
+    const {acceptedFiles, getRootProps, getInputProps} = useDropzone({
+        accept: '.gff,.gtf,.gff3',
+        onDrop(files) {
+            const file = files[0];
+            setFilename(file.name);
+            dispatch(uploadAnnotations(file));
+        }
+    });
 
     return (
         <Grid container justify='center' alignItems='center'>
             <form>
-                <FileInput
-                    name="annotations"
-                    dropzone_options={{
-                        multiple: false,
-                        accept: 'image/*'
-                    }}
-                />
-                {label}
+                <section className="container" style={{textAlign: 'center'}}>
+                    <div {...getRootProps({className: 'dropzone'})}>
+                        <input {...getInputProps()}/>
+                        <Button color={'primary'} variant={'contained'} size={'large'}>
+                            Upload
+                            {loading ?
+                                <CircularProgress variant={'indeterminate'} size={20} color={'secondary'} style={{marginLeft: '5px'}}/>
+                                :
+                                <CloudUploadIcon style={{marginLeft: '5px'}}/>
+                            }
+                        </Button>
+                    </div>
+                    <div>{filename}</div>
+                </section>
             </form>
         </Grid>
     );
-});
-
-export default AnnotationUpload;
+}
 
 AnnotationUpload.propTypes = {};

@@ -46,6 +46,9 @@ export default function GenePlot(props) {
     const TEXT_COLOR = 'black';
 
     // const viewBox = `0 0 ${width} ${height}`;
+    if (genes.length === 0)
+        return null;
+    
     return (
         <Grid direction={'row'} container justify={'center'}>
             <Grid direction={'row'} xs={12} justify={'center'} container>

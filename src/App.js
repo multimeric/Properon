@@ -15,6 +15,7 @@ import * as ScriblCanvas from 'scribl';
 
 import Scribl from './components/Scribl';
 import OperonStepper from './components/Stepper';
+import SinglePageForm from './components/SinglePage';
 import {Provider} from 'react-redux';
 import store from './Store';
 
@@ -28,7 +29,7 @@ export default function App() {
                 container
                 spacing={32}
             >
-                <OperonStepper/>
+                <SinglePageForm/>
             </Grid>
         </Provider>
     );

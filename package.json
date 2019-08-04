@@ -9,7 +9,7 @@
     "bignumber.js": "^9.0.0",
     "file-saver": "^2.0.2",
     "filereader-stream": "^2.0.0",
-    "formik": "^1.5.7",
+    "formik": "^1.5.8",
     "fraction.js": "^4.0.12",
     "fsa-redux-thunk": "^2.3.0",
     "mathjs": "^6.0.3",
@@ -50,7 +50,9 @@
     ]
   },
   "devDependencies": {
+    "@material-ui/icons": "^4.2.1",
     "gh-pages": "^2.0.1",
+    "just-debounce-it": "^1.1.0",
     "redux-devtools-extension": "^2.13.8"
   }
 }

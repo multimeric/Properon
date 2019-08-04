@@ -9,72 +9,48 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import {MenuItem, Select} from '@material-ui/core';
-import {Field, reduxForm, isValid} from 'redux-form';
 import PropTypes from 'prop-types';
-import {useSelector} from 'react-redux';
-import {Formik} from 'formik';
+import {Formik, withFormik, Field} from 'formik';
 import TextField from '@material-ui/core/TextField';
+import {useSelector, useDispatch} from 'react-redux';
 
-import {readGenes} from '../actions'
+import {MaterialFormikInput} from './MaterialFormik';
+import {setPosition} from '../actions';
+import AutoSubmit from './AutoSubmit';
 
-const renderTextField = ({
-                             label,
-                             input,
-                             meta: {touched, invalid, error},
-                             ...custom
-                         }) => (
-    <TextField
-        label={label}
-        placeholder={label}
-        error={touched && invalid}
-        helperText={touched && error}
-        {...input}
-        {...custom}
-    />
-);
+export default function PlotSettings(props) {
+    const dispatch = useDispatch();
+    return <Formik
+        initialValues={{
+            contig: '',
+            start: 0,
+            end: 2000
+        }}
+        onSubmit={values => {
+            console.log(values);
+            dispatch(setPosition(values));
+        }}
+        render={formikProps => <_InnerForm {...props} {...formikProps}/>}
+    />;
+}
 
-const PlotSettings = reduxForm({
-    form: 'plotSettings',
-    validate(values) {
-        const errors = {};
+function _InnerForm(props) {
+    const {contigs, handleSubmit, handleChange, handleBlur, values, errors, setFieldValue} = props;
 
-        if (!values.contig)
-            errors.contig = 'required';
-
-        if (typeof(values.coordsStart) !== 'number')
-            errors.coordsStart = 'required';
-
-        if (typeof(values.coordsEnd) !== 'number')
-            errors.coordsEnd = 'required';
-        else if (values.coordsEnd <= values.coordsStart)
-            errors.coordsEnd = 'Can\'t be lower than the start coordinate';
-
-        return errors;
-    },
-    destroyOnUnmount: false,
-    onChange(values, dispatch){
-        dispatch(readGenes());
-    }
-})(props => {
-    const {contigs, initialize, pristine} = props;
-
-    // Set the default contig to be the first one
+    // Whenever the list of contigs changes, set the current value to the first one
     useEffect(() => {
-        if (pristine) {
-            initialize({
-                contig: contigs[0]
-            });
-        }
+        setFieldValue('contig', contigs[0]);
     }, [contigs]);
 
     return (
         <Grid container justify='center' alignItems='center'>
-            <form>
-                <FormControl margin="normal" required fullWidth>
+            <AutoSubmit debounceMs={300}/>
+            <Grid item md={4}>
+                <FormControl fullWidth>
                     <InputLabel htmlFor="contig">Operon Contig</InputLabel>
                     <Field name='contig' component={
-                        ({input, meta}) => {
-                            return <Select value={input.value} onChange={input.onChange}>
+                        ({field}) => {
+                            return <Select {...field}>
                                 {
                                     contigs.map(contig => {
 
@@ -89,21 +65,19 @@ const PlotSettings = reduxForm({
                         }
                     }/>
                 </FormControl>
-                <div>
-                    <Field label="Start coordinate" name='coordsStart' component={renderTextField} type={'number'} parse={Number}/>
-                </div>
-                <div>
-                    <Field label="End coordinate" name='coordsEnd' component={renderTextField} type={'number'} parse={Number}/>
-                </div>
-            </form>
+            </Grid>
+            <Grid item md={4}>
+                <Field label="Start coordinate" name='start' fullWidth component={MaterialFormikInput} type={'number'}/>
+            </Grid>
+            <Grid item md={4}>
+                <Field label="End coordinate" name='end' fullWidth component={MaterialFormikInput} type={'number'}/>
+            </Grid>
         </Grid>
     );
-});
+}
 
 PlotSettings.propTypes = {
     selectedContig: PropTypes.string,
     selectContig: PropTypes.func,
     contigs: PropTypes.arrayOf(PropTypes.string)
 };
-
-export default PlotSettings;

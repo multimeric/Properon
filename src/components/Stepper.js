@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
@@ -43,7 +43,7 @@ export default function OperonStepper(props) {
     // Local state
     const [activeStep, setActiveStep] = React.useState(0);
     const settingsValid = useFormValid('plotSettings');
-    const displaySettingsValid = useFormValid('displaySettings');
+    const [displaySettingsValid, setDisplaySettingsValid] = useState(false);
     const settings = useSelector(getFormValues('plotSettings'));
     const displaySettings = useSelector(getFormValues('displaySettings'));
     const annotationValid = useFormValid('annotations');
@@ -64,7 +64,9 @@ export default function OperonStepper(props) {
             formValid = settingsValid;
             break;
         case 2:
-            stepComponent = <DisplaySettings/>;
+            stepComponent = <DisplaySettings
+                onValidityChange={setDisplaySettingsValid}
+            />;
             showNext = true;
             showBack = true;
             formValid = displaySettingsValid;
