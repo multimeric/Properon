@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import FileSaver from 'file-saver';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-import {flexbox} from '@material-ui/system';
 
 import SvgLayout from './SvgLayout';
 import ResizingSvg from './ResizingSvg';
@@ -24,7 +23,7 @@ export default function GenePlot(props) {
         fontSize,
         centerLine,
         showScale,
-
+        geneStrokeWidth
     } = props;
 
     // Keep track of the SVG element, so we can export it
@@ -38,10 +37,6 @@ export default function GenePlot(props) {
 
     // Width, measured in "svg units per genomic unit"
     const widthScale = displayLength / valueLength;
-
-    // The height of each tick, in SVG units
-    const MAJOR_TICK = 0.05;
-    const MINOR_TICK = 0.02;
 
     const TEXT_COLOR = 'black';
 
@@ -62,10 +57,6 @@ export default function GenePlot(props) {
                                 xOffsetEnd={padding + displayLength}
                                 valueStart={start}
                                 valueEnd={end}
-                                majorTickHeight={MAJOR_TICK}
-                                minorTickHeight={MINOR_TICK}
-                                // majorTickWidth={0.2}
-                                // minorTickWidth={0.05}
                                 {...scaleProps}
                             />}
                             <GeneBlocks
@@ -82,6 +73,7 @@ export default function GenePlot(props) {
                                 widthScale={widthScale}
                                 xPadding={padding}
                                 centerLine={centerLine}
+                                strokeWidth={geneStrokeWidth}
                             />
                         </SvgLayout>
                     </ResizingSvg>
@@ -133,11 +125,6 @@ GenePlot.propTypes = {
     width: PropTypes.number,
 
     /**
-     * Height of the entire plot, in HTML units
-     */
-    height: PropTypes.number,
-
-    /**
      * The amount of space to leave either side of the scale, but still inside the SVG, as a proportion of the width.
      * This should be a number between 0 and 1
      */
@@ -149,15 +136,13 @@ GenePlot.propTypes = {
     pointLength: PropTypes.number,
 
     /**
-     * The proportion of the whole component devoted to the scale, must be a number between 0 and 1
-     */
-    scaleProportion: PropTypes.number,
-
-    /**
      * Whether or not to round the ends of the gene polygons
      */
     rounded: PropTypes.bool,
 
+    /**
+     * Height of the gene blocks, in pixels
+     */
     geneHeight: PropTypes.number,
 
     /**
@@ -168,19 +153,23 @@ GenePlot.propTypes = {
     /**
      * Whether or not to show the scale
      */
-    showScale: PropTypes.bool
+    showScale: PropTypes.bool,
+
+    /**
+     * The width of the border around the gene glyphs
+     */
+    geneStrokeWidth: PropTypes.number
 };
 
 GenePlot.defaultProps = {
-    geneHeight: 200,
+    geneHeight: 100,
     scaleProps: {},
     fontSize: 20,
     width: 800,
-    // height: 15,
     padding: 50,
     pointLength: 500,
-    scaleProportion: 0.3,
     rounded: false,
     centerLine: true,
-    showScale: true
+    showScale: true,
+    geneStrokeWidth: 2
 };

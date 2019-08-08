@@ -46,43 +46,36 @@ export default function SinglePageForm(props) {
                 <ExpansionPanelDetails>
                     {state.loadingState.genes && <CircularProgress variant={'indeterminate'}/>}
                     <Grid justify={'center'} container>
-                        <GenePlot {...state.settings} start={state.position.start} end={state.position.end}
-                                  genes={state.genes}/>
+                        <GenePlot 
+                            geneStrokeWidth={state.settings.geneStrokeWidth}
+                            start={state.position.start}
+                            end={state.position.end}
+                            genes={state.genes}
+                            centerLine={state.settings.centerLine}
+                            showScale={state.settings.showScale}
+                            width={state.settings.width}
+                            rounded={state.settings.rounded}
+                            geneHeight={state.settings.geneHeight}
+                            fontSize={state.settings.labelFontSize}
+                            pointLength={state.settings.pointLength}
+                            scaleProps={{
+                                minorTick: state.settings.minorTicks,
+                                majorTick:  state.settings.majorTicks,
+                                color: 'black',
+                                minorTickHeight: state.settings.minorTickHeight,
+                                minorTickWidth: state.settings.minorTickWidth,
+                                majorTickHeight: state.settings.majorTickHeight,
+                                majorTickWidth: state.settings.majorTickWidth,
+                                fontSize: state.settings.scaleFontSize,
+                                lineWidth: state.settings.scaleWidth,
+                                endTicks: state.settings.firstLastTick,
+                                showScale: state.settings.showScale
+                            }}
+                        />
                     </Grid>
                 </ExpansionPanelDetails>
             </ExpansionPanel>
             <DisplaySettings/>
         </Container>
     );
-    {/*<Grid*/
-    }
-    {/*    style={{*/
-    }
-    {/*        maxWidth: '1000px',*/
-    }
-    {/*        width: '100%'*/
-    }
-    {/*    }}*/
-    }
-    {/*    item>*/
-    }
-    {/*    <Card style={{*/
-    }
-    {/*        padding: '13px'*/
-    }
-    {/*    }}>*/
-    }
-    {/*        <CardContent>*/
-    }
-    {/*            
-        {/*            
-        {/*            
-        {/*            <DisplaySettings/>*/
-    }
-    {/*        </CardContent>*/
-    }
-    {/*    </Card>*/
-    }
-    {/*</Grid>*/
-    }
 }

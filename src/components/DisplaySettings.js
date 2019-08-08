@@ -30,8 +30,12 @@ export default function DisplaySettings(props) {
             showScale: GenePlot.defaultProps.showScale,
             centerLine: GenePlot.defaultProps.centerLine,
             width: GenePlot.defaultProps.width,
-            height: GenePlot.defaultProps.height,
-            pointLength: GenePlot.defaultProps.pointLength
+            pointLength: GenePlot.defaultProps.pointLength,
+            scaleWidth: DiagramScale.defaultProps.lineWidth,
+            minorTickWidth: DiagramScale.defaultProps.minorTickWidth,
+            majorTickWidth: DiagramScale.defaultProps.majorTickWidth,
+            geneStrokeWidth: GenePlot.defaultProps.geneStrokeWidth,
+            geneHeight: GenePlot.defaultProps.geneHeight
         }}
         onSubmit={data => {
             dispatch(updateSettings(data));
@@ -46,57 +50,102 @@ export default function DisplaySettings(props) {
                     </Typography>
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
-                    <Grid container justify='center' alignItems='center'>
-                        <AutoSubmit debounceMs={300}/>
-                        <Grid item md={3}>
-                            <Field label="Scale font size" name='scaleFontSize' component={MaterialFormikInput}
-                                   type="number"/>
+                    <AutoSubmit debounceMs={300}/>
+                    <Grid container direction={'row'} justify={'space-evenly'}>
+                        <Grid md={4} item>
+                            <Typography variant={'h6'}>Scale Settings</Typography>
+                            <Grid container justify='center' alignItems='stretch' direction={'column'}>
+                                <Grid item>
+                                    <Field fullWidth label="Show scale" name='showScale' component={MaterialFormikInput}
+                                           checkbox={true}/>
+                                </Grid>
+                                <Grid item>
+                                    <Field label="Scale font size" name='scaleFontSize' component={MaterialFormikInput}
+                                           type="number"/>
+                                </Grid>
+                                <Grid item>
+                                    <Field label="Minor tick interval" name='minorTicks' component={MaterialFormikInput}
+                                           type={'number'}/>
+                                </Grid>
+                                <Grid item>
+                                    <Field label="Minor tick height" name='minorTickHeight'
+                                           component={MaterialFormikInput}
+                                           type="number"/>
+                                </Grid>
+                                <Grid item>
+                                    <Field label="Minor tick width" name='minorTickWidth'
+                                           component={MaterialFormikInput}
+                                           type="number"/>
+                                </Grid>
+                                <Grid item>
+                                    <Field label="Major tick interval" name='majorTicks' component={MaterialFormikInput}
+                                           type="number"
+                                           parse={Number}/>
+                                </Grid>
+                                <Grid item>
+                                    <Field label="Major tick width" name='majorTickWidth'
+                                           component={MaterialFormikInput}
+                                           type="number"/>
+                                </Grid>
+                                <Grid item>
+                                    <Field label="Major tick height" name='majorTickHeight'
+                                           component={MaterialFormikInput}
+                                           type="number"/>
+                                </Grid>
+                                <Grid item>
+                                    <Field label="Scale width" name='scaleWidth' component={MaterialFormikInput}
+                                           type="number"/>
+                                </Grid>
+                                <Grid item>
+                                    <Field label="Start end tick" name='firstLastTick' component={MaterialFormikInput}
+                                           checkbox={true}/>
+                                </Grid>
+                            </Grid>
                         </Grid>
-                        <Grid item md={3}>
-                            <Field label="Label font size" name='labelFontSize' component={MaterialFormikInput}
-                                   type="number"/>
+                        <Grid md={4} item>
+                            <Typography variant={'h6'}>Gene Settings</Typography>
+                            <Grid container justify='center' alignItems='stretch' direction={'column'}>
+                                <Grid item>
+                                    <Field label="Gene symbol height" name='geneHeight'
+                                           component={MaterialFormikInput}
+                                           type="number"/>
+                                </Grid>
+                                <Grid item>
+                                    <Field label="Gene label font size" name='labelFontSize'
+                                           component={MaterialFormikInput}
+                                           type="number"/>
+                                </Grid>
+                                <Grid item>
+                                    <Field label="Gene border width" name='geneStrokeWidth'
+                                           component={MaterialFormikInput}
+                                           type="number"/>
+                                </Grid>
+                                <Grid item>
+                                    <Field label="Round ends" name='rounded' component={MaterialFormikInput}
+                                           checkbox={true}/>
+                                </Grid>
+                                <Grid item>
+                                    <Field label="Gene taper length" name='pointLength' component={MaterialFormikInput}
+                                           type="number"/>
+                                </Grid>
+                            </Grid>
                         </Grid>
-                        <Grid item md={3}>
-                            <Typography gutterBottom>
-                                Scale size
-                            </Typography>
-                            <Field label="Scale size" name='scaleHeight' component={Slider} type={'number'}/>
-                        </Grid>
-                        <Grid item md={3}>
-                            <Field label="Start end tick" name='firstLastTick' component={MaterialFormikInput}
-                                   checkbox={true}/>
-                        </Grid>
-                        <Grid item md={3}>
-                            <Field label="Show center line" name='centerLine' component={MaterialFormikInput}
-                                   checkbox={true}/>
-                        </Grid>
-                        <Grid item md={3}>
-                            <Field label="Show scale" name='showScale' component={MaterialFormikInput} checkbox={true}/>
-                        </Grid>
-                        <Grid item md={3}>
-                            <Field label="Major ticks" name='majorTicks' component={MaterialFormikInput} type="number"
-                                   parse={Number}/>
-                        </Grid>
-                        <Grid item md={3}>
-                            <Field label="Minor ticks" name='minorTicks' component={MaterialFormikInput}
-                                   type={'number'}/>
-                        </Grid>
-                        <Grid item md={3}>
-                            <Field label="Round ends" name='rounded' component={MaterialFormikInput} checkbox={true}/>
-                        </Grid>
-                        <Grid item md={3}>
-                            <Field label="Plot width" name='width' component={MaterialFormikInput} type="number"/>
-                        </Grid>
-                        <Grid item md={3}>
-                            <Field label="Plot height" name='height' component={MaterialFormikInput} type="number"/>
-                        </Grid>
-                        <Grid item md={3}>
-                            <Field label="Point length" name='pointLength' component={MaterialFormikInput}
-                                   type="number"/>
+                        <Grid md={4} item>
+                            <Typography variant={'h6'}>Miscellaneous Settings</Typography>
+                            <Grid container justify='center' alignItems='stretch' direction={'column'}>
+                                <Grid item>
+                                    <Field label="Show center line" name='centerLine' component={MaterialFormikInput}
+                                           checkbox={true}/>
+                                </Grid>
+                                <Grid item>
+                                    <Field label="Plot width" name='width' component={MaterialFormikInput}
+                                           type="number"/>
+                                </Grid>
+                            </Grid>
                         </Grid>
                     </Grid>
                 </ExpansionPanelDetails>
             </ExpansionPanel>;
         }}
-    </Formik>;
+    </Formik>
 };

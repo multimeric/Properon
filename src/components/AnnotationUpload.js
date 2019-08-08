@@ -27,7 +27,7 @@ export default function AnnotationUpload(props) {
                     <div {...getRootProps({className: 'dropzone'})}>
                         <input {...getInputProps()}/>
                         <Button color={'primary'} variant={'contained'} size={'large'}>
-                            Upload
+                            Upload GFF
                             {loading ?
                                 <CircularProgress variant={'indeterminate'} size={20} color={'secondary'} style={{marginLeft: '5px'}}/>
                                 :

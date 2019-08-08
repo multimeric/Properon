@@ -14,7 +14,7 @@ export const initialState = {
     position: {
         contig: null,
         start: 0,
-        end: 2000
+        end: 5000
     },
     settings: {
         scaleFontSize: DiagramScale.defaultProps.fontSize,

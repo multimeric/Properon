@@ -4,10 +4,23 @@ import Path from 'svg-path-generator';
 import useDimensions from 'react-use-dimensions';
 
 export default function Genes(props) {
-    const {yOffset, genes, start, xOffsetStart, xOffsetEnd, pointLength, geneHeight, xPadding, widthScale, rounded, textColour, fontSize, centerLine} = props;
+    const {
+        yOffset,
+        genes,
+        start,
+        xOffsetStart,
+        xOffsetEnd,
+        pointLength,
+        geneHeight,
+        xPadding,
+        widthScale,
+        centerLine,
+        ...rest
+    } = props;
     const lineHeight = yOffset + (geneHeight / 2);
     return <g>
-        {centerLine && <line x1={xOffsetStart} x2={xOffsetEnd} y1={lineHeight} y2={lineHeight} width={widthScale} stroke={'black'}/>}
+        {centerLine &&
+        <line x1={xOffsetStart} x2={xOffsetEnd} y1={lineHeight} y2={lineHeight} width={widthScale} stroke={'black'}/>}
         {genes.map(gene => {
             const geneLength = gene.end - gene.start;
 
@@ -43,19 +56,17 @@ export default function Genes(props) {
             return <GeneBlock
                 geneLength={geneLength}
                 coords={coords}
-                textColour={textColour}
-                rounded={rounded}
                 pointLength={pointLength}
-                fontSize={fontSize}
                 colour={gene.color}
                 text={gene.text}
+                {...rest}
             />;
         })}
     </g>;
 }
 
 function GeneBlock(props) {
-    const {geneLength, coords, textColour, rounded, pointLength, fontSize, colour, text} = props;
+    const {geneLength, coords, textColour, rounded, pointLength, fontSize, colour, text, strokeWidth} = props;
     const [textRef, textDims] = useDimensions({
         boundsType: 'BBOX'
     });
@@ -91,7 +102,7 @@ function GeneBlock(props) {
     const textY = coords.m[1] + (textDims.height / 2);
     return (
         <g>
-            <path d={path.end()} fill={colour}/>
+            <path d={path.end()} fill={colour} strokeWidth={strokeWidth} stroke={'black'}/>
             <text
                 ref={textRef}
                 x={textX}
@@ -116,5 +127,6 @@ Genes.propTypes = {
     rounded: PropTypes.bool,
     textColour: PropTypes.string,
     fontSize: PropTypes.number,
-    centerLine: PropTypes.bool
+    centerLine: PropTypes.bool,
+    strokeWidth: PropTypes.number
 };

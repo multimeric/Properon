@@ -24,7 +24,7 @@ export default function PlotSettings(props) {
         initialValues={{
             contig: '',
             start: 0,
-            end: 2000
+            end: 5000
         }}
         onSubmit={values => {
             console.log(values);
