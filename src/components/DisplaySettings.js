@@ -35,7 +35,8 @@ export default function DisplaySettings(props) {
             minorTickWidth: DiagramScale.defaultProps.minorTickWidth,
             majorTickWidth: DiagramScale.defaultProps.majorTickWidth,
             geneStrokeWidth: GenePlot.defaultProps.geneStrokeWidth,
-            geneHeight: GenePlot.defaultProps.geneHeight
+            geneHeight: GenePlot.defaultProps.geneHeight,
+            labelRotation: GenePlot.defaultProps.labelRotation
         }}
         onSubmit={data => {
             dispatch(updateSettings(data));
@@ -127,6 +128,10 @@ export default function DisplaySettings(props) {
                                 <Grid item>
                                     <Field label="Gene taper length" name='pointLength' component={MaterialFormikInput}
                                            type="number"/>
+                                </Grid>
+                                <Grid item>
+                                    <Field label="Label rotation" name='labelRotation' component={MaterialFormikInput}
+                                           type="number" inputProps={{min: 0, max: 90}}/>
                                 </Grid>
                             </Grid>
                         </Grid>

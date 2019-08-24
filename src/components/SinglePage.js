@@ -22,60 +22,69 @@ import {Container} from '@material-ui/core';
 export default function SinglePageForm(props) {
     const state = useSelector(state => state.data);
     return (
-        <Container maxWidth={'lg'}>
-            <ExpansionPanel defaultExpanded={true}>
-                <ExpansionPanelSummary>
-                    <Typography variant={'h5'}>
-                        Annotations
-                    </Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
-                    <Grid container>
-                        <AnnotationUpload loading={state.loadingState.contigs}/>
-                        <Divider variant="middle"/>
-                        <PlotSettings contigs={state.contigs}/>
-                    </Grid>
-                </ExpansionPanelDetails>
-            </ExpansionPanel>
-            <ExpansionPanel defaultExpanded={true}>
-                <ExpansionPanelSummary>
-                    <Typography variant={'h5'}>
-                        Plot
-                    </Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
-                    {state.loadingState.genes && <CircularProgress variant={'indeterminate'}/>}
-                    <Grid justify={'center'} container>
-                        <GenePlot 
-                            geneStrokeWidth={state.settings.geneStrokeWidth}
-                            start={state.position.start}
-                            end={state.position.end}
-                            genes={state.genes}
-                            centerLine={state.settings.centerLine}
-                            showScale={state.settings.showScale}
-                            width={state.settings.width}
-                            rounded={state.settings.rounded}
-                            geneHeight={state.settings.geneHeight}
-                            fontSize={state.settings.labelFontSize}
-                            pointLength={state.settings.pointLength}
-                            scaleProps={{
-                                minorTick: state.settings.minorTicks,
-                                majorTick:  state.settings.majorTicks,
-                                color: 'black',
-                                minorTickHeight: state.settings.minorTickHeight,
-                                minorTickWidth: state.settings.minorTickWidth,
-                                majorTickHeight: state.settings.majorTickHeight,
-                                majorTickWidth: state.settings.majorTickWidth,
-                                fontSize: state.settings.scaleFontSize,
-                                lineWidth: state.settings.scaleWidth,
-                                endTicks: state.settings.firstLastTick,
-                                showScale: state.settings.showScale
-                            }}
-                        />
-                    </Grid>
-                </ExpansionPanelDetails>
-            </ExpansionPanel>
-            <DisplaySettings/>
-        </Container>
+        <>
+            <Typography variant={'h3'}>
+                Properon
+            </Typography>
+            <Typography variant={'subtitle1'}>
+                Operon Diagram Generator
+            </Typography>
+            <Container maxWidth={'lg'}>
+                <ExpansionPanel defaultExpanded={true}>
+                    <ExpansionPanelSummary>
+                        <Typography variant={'h5'}>
+                            Annotations
+                        </Typography>
+                    </ExpansionPanelSummary>
+                    <ExpansionPanelDetails>
+                        <Grid container>
+                            <AnnotationUpload loading={state.loadingState.contigs}/>
+                            <Divider variant="middle"/>
+                            <PlotSettings contigs={state.contigs}/>
+                        </Grid>
+                    </ExpansionPanelDetails>
+                </ExpansionPanel>
+                <ExpansionPanel defaultExpanded={true}>
+                    <ExpansionPanelSummary>
+                        <Typography variant={'h5'}>
+                            Plot
+                        </Typography>
+                    </ExpansionPanelSummary>
+                    <ExpansionPanelDetails>
+                        <Grid justify={'center'} container>
+                            {state.loadingState.genes && <CircularProgress variant={'indeterminate'}/>}
+                            <GenePlot
+                                geneStrokeWidth={state.settings.geneStrokeWidth}
+                                start={state.position.start}
+                                end={state.position.end}
+                                genes={state.genes}
+                                centerLine={state.settings.centerLine}
+                                showScale={state.settings.showScale}
+                                width={state.settings.width}
+                                rounded={state.settings.rounded}
+                                geneHeight={state.settings.geneHeight}
+                                fontSize={state.settings.labelFontSize}
+                                pointLength={state.settings.pointLength}
+                                labelRotation={state.settings.labelRotation}
+                                scaleProps={{
+                                    minorTick: state.settings.minorTicks,
+                                    majorTick: state.settings.majorTicks,
+                                    color: 'black',
+                                    minorTickHeight: state.settings.minorTickHeight,
+                                    minorTickWidth: state.settings.minorTickWidth,
+                                    majorTickHeight: state.settings.majorTickHeight,
+                                    majorTickWidth: state.settings.majorTickWidth,
+                                    fontSize: state.settings.scaleFontSize,
+                                    lineWidth: state.settings.scaleWidth,
+                                    endTicks: state.settings.firstLastTick,
+                                    showScale: state.settings.showScale
+                                }}
+                            />
+                        </Grid>
+                    </ExpansionPanelDetails>
+                </ExpansionPanel>
+                <DisplaySettings/>
+            </Container>
+        </>
     );
 }

@@ -23,7 +23,8 @@ export default function GenePlot(props) {
         fontSize,
         centerLine,
         showScale,
-        geneStrokeWidth
+        geneStrokeWidth,
+        labelRotation
     } = props;
 
     // Keep track of the SVG element, so we can export it
@@ -74,6 +75,7 @@ export default function GenePlot(props) {
                                 xPadding={padding}
                                 centerLine={centerLine}
                                 strokeWidth={geneStrokeWidth}
+                                textRotation={labelRotation}
                             />
                         </SvgLayout>
                     </ResizingSvg>
@@ -158,7 +160,13 @@ GenePlot.propTypes = {
     /**
      * The width of the border around the gene glyphs
      */
-    geneStrokeWidth: PropTypes.number
+    geneStrokeWidth: PropTypes.number,
+
+    /**
+     * The angle of rotation of the gene labels. The text will be rotated by this many degrees *backwards* from 
+     * horizontal, not forwards
+     */
+    labelRotation: PropTypes.number
 };
 
 GenePlot.defaultProps = {
@@ -171,5 +179,6 @@ GenePlot.defaultProps = {
     rounded: false,
     centerLine: true,
     showScale: true,
-    geneStrokeWidth: 2
+    geneStrokeWidth: 2,
+    labelRotation: 45
 };

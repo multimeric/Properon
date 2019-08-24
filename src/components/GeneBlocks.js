@@ -66,7 +66,18 @@ export default function Genes(props) {
 }
 
 function GeneBlock(props) {
-    const {geneLength, coords, textColour, rounded, pointLength, fontSize, colour, text, strokeWidth} = props;
+    const {
+        geneLength,
+        coords,
+        textColour,
+        rounded,
+        pointLength,
+        fontSize,
+        colour,
+        text,
+        strokeWidth,
+        textRotation
+    } = props;
     const [textRef, textDims] = useDimensions({
         boundsType: 'BBOX'
     });
@@ -110,7 +121,7 @@ function GeneBlock(props) {
                 textAnchor="end"
                 fill={textColour}
                 fontSize={fontSize}
-                transform={`rotate(315, ${textX}, ${textY})`}
+                transform={`rotate(${360 - textRotation}, ${textX}, ${textY})`}
             >{text}</text>
         </g>
     );
@@ -128,5 +139,6 @@ Genes.propTypes = {
     textColour: PropTypes.string,
     fontSize: PropTypes.number,
     centerLine: PropTypes.bool,
-    strokeWidth: PropTypes.number
+    strokeWidth: PropTypes.number,
+    textRotation: PropTypes.number
 };
