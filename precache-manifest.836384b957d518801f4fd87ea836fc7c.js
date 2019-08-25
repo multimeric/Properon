@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "5b1403c37d8433420e14c3b3d58a0fe0",
+    "revision": "0098bdb48481cf43061d528af0661fc3",
     "url": "/Improperon/index.html"
   },
   {
-    "revision": "019274108fac94f24c4d",
+    "revision": "33b4ef58b16ef10b1627",
     "url": "/Improperon/static/css/main.2cce8147.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Improperon/static/js/2.b8ddcbd1.chunk.js"
   },
   {
-    "revision": "019274108fac94f24c4d",
-    "url": "/Improperon/static/js/main.d1899436.chunk.js"
+    "revision": "33b4ef58b16ef10b1627",
+    "url": "/Improperon/static/js/main.9037edeb.chunk.js"
   },
   {
     "revision": "e72398012630cec1ff69",
