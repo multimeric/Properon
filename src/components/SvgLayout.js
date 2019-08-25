@@ -1,6 +1,11 @@
 import React, {useRef, useEffect, useState} from 'react';
 import propTypes from 'prop-types';
+import useDimensions from 'react-use-dimensions';
 
+/**
+ * Component that automatically lays out child SVG components so that they are offset from each other, and are not 
+ * overlapping, kind of like HTML does, but for SVG
+ */
 export default function SvgLayout(props) {
     const {mode, children} = props;
     
@@ -38,16 +43,53 @@ export default function SvgLayout(props) {
 
     return <g>
         {React.Children.map(realChildren, (child, i) => {
-            const props = mode === 'width' ? {
-                xOffset: cumSums[i],
-                reportWidth: setIthDims(i)
-            } : {
-                yOffset: cumSums[i],
-                reportHeight: setIthDims(i)
-            };
-            return React.cloneElement(child, props);
+            let childProps, wrapperProps;
+            
+            if (mode === 'width'){
+                childProps = {
+                    xOffset: cumSums[i]                   
+                };
+                wrapperProps = {
+                    reportWidth: setIthDims(i)
+                }
+            }
+            else{
+                childProps = {
+                    yOffset: cumSums[i]
+                };
+                wrapperProps = {
+                    reportHeight: setIthDims(i)
+                }
+            }
+            
+            const newChild = React.cloneElement(child, childProps); 
+            return <SvgChild {...wrapperProps}>
+                {newChild}
+            </SvgChild>;
         })}
     </g>;
+}
+
+function SvgChild(props){
+    const {reportHeight, reportWidth, children} = props;
+    
+    
+    const [ref, dims] = useDimensions({
+        boundsType: 'BBOX'
+    });
+
+    // useEffect(() => {
+        if (reportHeight && 'height' in dims){
+            reportHeight(dims.height);
+        }
+        
+        if (reportWidth && 'width' in dims){
+            reportWidth(dims.width);
+        }
+    // }, [dims, reportHeight, reportWidth]);
+    
+    // children is a single element, so we can do this
+    return React.cloneElement(children, {ref})
 }
 
 SvgLayout.propTypes = {

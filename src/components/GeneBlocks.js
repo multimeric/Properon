@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Path from 'svg-path-generator';
 import useDimensions from 'react-use-dimensions';
 
-export default function Genes(props) {
+const Genes = React.forwardRef((props, ref) => {
     const {
         yOffset,
         genes,
@@ -18,7 +18,7 @@ export default function Genes(props) {
         ...rest
     } = props;
     const lineHeight = yOffset + (geneHeight / 2);
-    return <g>
+    return <g ref={ref}>
         {centerLine &&
         <line x1={xOffsetStart} x2={xOffsetEnd} y1={lineHeight} y2={lineHeight} width={widthScale} stroke={'black'}/>}
         {genes.map(gene => {
@@ -33,7 +33,7 @@ export default function Genes(props) {
             For a square gene, we draw lines from a -> b -> d -> f -> g, which forms a rectangle with a point
             If this gene is rounded, we use c and e as bezier control points
             For a gene that's too short to have the rectangle section, we form a triangle with a -> d -> g
-            Finally, m is the "middle", where the text is centered
+            m is the very center of the gene polygon, and t is the center at the bottom, where text should be located
             */
 
             const coords = {
@@ -44,7 +44,8 @@ export default function Genes(props) {
                 e: [gene.end - start, yOffset + geneHeight],
                 f: [gene.end - start - pointLength, yOffset + geneHeight],
                 g: [gene.start - start, yOffset + geneHeight],
-                m: [gene.start - start + geneLength / 2, yOffset + geneHeight]
+                t: [gene.start - start + geneLength / 2, yOffset + geneHeight],
+                m: [gene.start - start + geneLength / 2, yOffset + geneHeight/2]
             };
 
             // Scale all widths
@@ -59,11 +60,12 @@ export default function Genes(props) {
                 pointLength={pointLength}
                 colour={gene.color}
                 text={gene.text}
+                strand={gene.strand}
                 {...rest}
             />;
         })}
     </g>;
-}
+});
 
 function GeneBlock(props) {
     const {
@@ -76,7 +78,8 @@ function GeneBlock(props) {
         colour,
         text,
         strokeWidth,
-        textRotation
+        textRotation,
+        strand
     } = props;
     const [textRef, textDims] = useDimensions({
         boundsType: 'BBOX'
@@ -109,11 +112,13 @@ function GeneBlock(props) {
     }
     path.close();
 
-    const textX = coords.m[0];
-    const textY = coords.m[1] + (textDims.height / 2);
+    const blockTransform = strand === '-' ? `rotate(180, ${coords.m[0]}, ${coords.m[1]})` : '';
+
+    const textX = coords.t[0];
+    const textY = coords.t[1] + (textDims.height / 2);
     return (
         <g>
-            <path d={path.end()} fill={colour} strokeWidth={strokeWidth} stroke={'black'}/>
+            <path d={path.end()} fill={colour} strokeWidth={strokeWidth} stroke={'black'} transform={blockTransform}/>
             <text
                 ref={textRef}
                 x={textX}
@@ -142,3 +147,5 @@ Genes.propTypes = {
     strokeWidth: PropTypes.number,
     textRotation: PropTypes.number
 };
+
+export default Genes;

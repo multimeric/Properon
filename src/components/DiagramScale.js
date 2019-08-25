@@ -24,9 +24,9 @@ function getTicks(minorTick, majorTick, valueStart, valueEnd, endTicks) {
 /**
  * The scale a diagram, including ticks
  */
-export default function DiagramScale(props) {
+const DiagramScale = React.forwardRef((props, ref) => {
     const {
-        reportHeight,
+        // reportHeight,
         color,
         valueStart,
         valueEnd,
@@ -63,10 +63,10 @@ export default function DiagramScale(props) {
     }, [props]);
 
     const lineHeight = yOffset + labelSize + majorTickHeight;
-    reportHeight(lineHeight + majorTickHeight);
+    // reportHeight(lineHeight + majorTickHeight);
 
     return (
-        <g className="scale">
+        <g className="scale" ref={ref}>
             {showScale && <line
                 className="scale-line"
                 strokeWidth={lineWidth}
@@ -132,7 +132,7 @@ export default function DiagramScale(props) {
             </g>
         </g>
     );
-}
+});
 
 DiagramScale.propTypes = {
     /**
@@ -241,3 +241,5 @@ DiagramScale.defaultProps = {
     endTicks: true,
     showScale: true
 };
+
+export default DiagramScale;

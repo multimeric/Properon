@@ -24,7 +24,8 @@ export default function GenePlot(props) {
         centerLine,
         showScale,
         geneStrokeWidth,
-        labelRotation
+        labelRotation,
+        reportHeight
     } = props;
 
     // Keep track of the SVG element, so we can export it
@@ -44,6 +45,9 @@ export default function GenePlot(props) {
     // const viewBox = `0 0 ${width} ${height}`;
     if (genes.length === 0)
         return null;
+    
+    const plusGenes = genes.filter(gene => gene.strand === '+');
+    const minusGenes = genes.filter(gene => gene.strand === '-');
     
     return (
         <Grid direction={'row'} container justify={'center'}>
@@ -66,7 +70,24 @@ export default function GenePlot(props) {
                                 pointLength={pointLength}
                                 fontSize={fontSize}
                                 geneHeight={geneHeight}
-                                genes={genes}
+                                genes={plusGenes}
+                                rounded={rounded}
+                                start={start}
+                                end={end}
+                                textColour={TEXT_COLOR}
+                                widthScale={widthScale}
+                                xPadding={padding}
+                                centerLine={centerLine}
+                                strokeWidth={geneStrokeWidth}
+                                textRotation={labelRotation}
+                            />
+                            <GeneBlocks
+                                xOffsetStart={padding}
+                                xOffsetEnd={padding + displayLength}
+                                pointLength={pointLength}
+                                fontSize={fontSize}
+                                geneHeight={geneHeight}
+                                genes={minusGenes}
                                 rounded={rounded}
                                 start={start}
                                 end={end}
