@@ -4,6 +4,9 @@ import gff from '@gmod/gff';
 import {getFormValues, isValid} from 'redux-form';
 import {Lava} from './colours';
 
+import get from 'lodash/get';
+
+
 const geneColours = new Lava();
 
 export const {setContigs, setGenes, updateSettings, setContigLoading, setGeneLoading} = createActions({
@@ -68,7 +71,13 @@ export const {uploadAnnotations, setPosition} = createActions({
                     }))
                     .on('data', features => {
                         for (const feature of features) {
-                            const name = feature.attributes.Name[0];
+                            // Fetch the name, or default to an empty string
+                            const name =  get(feature, 'attributes.Name[0]', '');
+
+                            // Skip features without the required attributes
+                            if (!['type', 'start', 'end'].every(k => k in feature))
+                                continue;
+
                             if (
                                 feature.type === 'gene'
                                 && feature.start <= position.end
