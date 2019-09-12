@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/Improperon/static/css/main.2cce8147.chunk.css",
-    "main.js": "/Improperon/static/js/main.9037edeb.chunk.js",
-    "main.js.map": "/Improperon/static/js/main.9037edeb.chunk.js.map",
+    "main.js": "/Improperon/static/js/main.fd5c554d.chunk.js",
+    "main.js.map": "/Improperon/static/js/main.fd5c554d.chunk.js.map",
     "runtime~main.js": "/Improperon/static/js/runtime~main.fcc68b01.js",
     "runtime~main.js.map": "/Improperon/static/js/runtime~main.fcc68b01.js.map",
-    "static/js/2.b8ddcbd1.chunk.js": "/Improperon/static/js/2.b8ddcbd1.chunk.js",
-    "static/js/2.b8ddcbd1.chunk.js.map": "/Improperon/static/js/2.b8ddcbd1.chunk.js.map",
+    "static/js/2.63a9f389.chunk.js": "/Improperon/static/js/2.63a9f389.chunk.js",
+    "static/js/2.63a9f389.chunk.js.map": "/Improperon/static/js/2.63a9f389.chunk.js.map",
     "index.html": "/Improperon/index.html",
-    "precache-manifest.836384b957d518801f4fd87ea836fc7c.js": "/Improperon/precache-manifest.836384b957d518801f4fd87ea836fc7c.js",
+    "precache-manifest.9fb94739c5219f065e047b9c64710736.js": "/Improperon/precache-manifest.9fb94739c5219f065e047b9c64710736.js",
     "service-worker.js": "/Improperon/service-worker.js",
     "static/css/main.2cce8147.chunk.css.map": "/Improperon/static/css/main.2cce8147.chunk.css.map"
   }
