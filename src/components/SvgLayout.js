@@ -78,7 +78,7 @@ function SvgChild(props){
         boundsType: 'BBOX'
     });
 
-    // useEffect(() => {
+    useEffect(() => {
         if (reportHeight && 'height' in dims){
             reportHeight(dims.height);
         }
@@ -86,7 +86,7 @@ function SvgChild(props){
         if (reportWidth && 'width' in dims){
             reportWidth(dims.width);
         }
-    // }, [dims, reportHeight, reportWidth]);
+    }, [dims, reportWidth, reportHeight]);
     
     // children is a single element, so we can do this
     return React.cloneElement(children, {ref})

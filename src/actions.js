@@ -80,6 +80,7 @@ export const {uploadAnnotations, setPosition} = createActions({
 
                             if (
                                 feature.type === 'gene'
+                                && feature.seq_id === position.contig
                                 && feature.start <= position.end
                                 && feature.end <= position.end
                                 && feature.start >= position.start

@@ -1,5 +1,6 @@
 import React, {useState, useRef, useEffect} from 'react';
 import PropTypes from 'prop-types';
+import SvgLayout from './SvgLayout';
 
 function getTicks(minorTick, majorTick, valueStart, valueEnd, endTicks) {
     // Start with one major tick for the start and end
@@ -21,61 +22,66 @@ function getTicks(minorTick, majorTick, valueStart, valueEnd, endTicks) {
     return [minorTicks, majorTicks];
 }
 
-/**
- * The scale a diagram, including ticks
- */
-const DiagramScale = React.forwardRef((props, ref) => {
+
+const DiagramLabels = React.forwardRef(function DiagramLabels(props, ref) {
     const {
-        // reportHeight,
+        valueStart,
+        xOffsetStart,
+        yOffset,
+        fontSize,
+        majorTicks,
+        widthScale,
+    } = props;
+    return <g ref={ref} className="tickLabels">
+        {
+            majorTicks.map(tick => {
+                const x = xOffsetStart + (tick - valueStart) * widthScale;
+                return (
+                    <text
+                        dominantBaseline={"hanging"}
+                        x={x}
+                        y={yOffset}
+                        textAnchor="middle"
+                        fontSize={fontSize}
+                    >
+                        {tick}
+                    </text>
+                );
+            })
+        }
+    </g>;
+});
+
+const DiagramLine = React.forwardRef(function DiagramLine(props, ref) {
+    const {
         color,
         valueStart,
-        valueEnd,
         xOffsetStart,
         xOffsetEnd,
         yOffset,
-        minorTick,
-        majorTick,
+        minorTicks,
+        majorTicks,
         minorTickHeight,
         majorTickHeight,
         minorTickWidth,
         majorTickWidth,
-        fontSize,
         lineWidth,
-        endTicks,
-        showScale
+        widthScale,
     } = props;
-    // The range of genomic coordinates
-    const valueRange = valueEnd - valueStart;
-    // How much to scale the width, in terms of SVG units per genomic unit
-    const widthScale = (xOffsetEnd - xOffsetStart) / valueRange;
-
-    // The genomic positions of each minor and major tick
-    const [minorTicks, majorTicks] = getTicks(minorTick, majorTick, valueStart, valueEnd, endTicks);
-
-    // The height of the labels, in SVG units. We start by guessing it at 10, but ultimately calculate it after the 
-    // first render pass
-    const [labelSize, setLabelSize] = useState(10);
-    const labelGroup = useRef();
-    // Calculate the label height. Rerun this whenever the props change
-    useEffect(() => {
-        const dims = labelGroup.current.getBBox();
-        setLabelSize(dims.height);
-    }, [props]);
-
-    const lineHeight = yOffset + labelSize + majorTickHeight;
-    // reportHeight(lineHeight + majorTickHeight);
-
+    const baseline = yOffset + majorTickHeight;
+    
     return (
         <g className="scale" ref={ref}>
-            {showScale && <line
+            <line
                 className="scale-line"
                 strokeWidth={lineWidth}
                 stroke="black"
                 x1={xOffsetStart}
                 x2={xOffsetEnd}
-                y1={lineHeight}
-                y2={lineHeight}
-            />}
+                y1={baseline}
+                y2={baseline}
+            />
+            }
 
             <g className="minorTicks">
                 {
@@ -86,8 +92,8 @@ const DiagramScale = React.forwardRef((props, ref) => {
                                 className="scale-minor-tick"
                                 x1={x}
                                 x2={x}
-                                y1={lineHeight - minorTickHeight}
-                                y2={lineHeight + minorTickHeight}
+                                y1={baseline - minorTickHeight}
+                                y2={baseline + minorTickHeight}
                                 stroke={color}
                                 strokeWidth={minorTickWidth}
                             />
@@ -104,8 +110,8 @@ const DiagramScale = React.forwardRef((props, ref) => {
                                 className="scale-minor-tick"
                                 x1={x}
                                 x2={x}
-                                y1={lineHeight - majorTickHeight}
-                                y2={lineHeight + majorTickHeight}
+                                y1={baseline - majorTickHeight}
+                                y2={baseline + majorTickHeight}
                                 stroke={color}
                                 strokeWidth={majorTickWidth}
                             />
@@ -113,23 +119,46 @@ const DiagramScale = React.forwardRef((props, ref) => {
                     })
                 }
             </g>
-            <g ref={labelGroup} className="tickLabels">
-                {
-                    majorTicks.map(tick => {
-                        const x = xOffsetStart + (tick - valueStart) * widthScale;
-                        return (
-                            <text
-                                x={x}
-                                y={yOffset + labelSize}
-                                textAnchor="middle"
-                                fontSize={fontSize}
-                            >
-                                {tick}
-                            </text>
-                        );
-                    })
-                }
-            </g>
+        </g>
+    );
+});
+
+/**
+ * The scale a diagram, including ticks
+ */
+const DiagramScale = React.forwardRef(function DiagramScale(props, ref) {
+    const {
+        valueStart,
+        valueEnd,
+        xOffsetStart,
+        xOffsetEnd,
+        minorTick,
+        majorTick,
+        endTicks,
+    } = props;
+    // The range of genomic coordinates
+    const valueRange = valueEnd - valueStart;
+    // How much to scale the width, in terms of SVG units per genomic unit
+    const widthScale = (xOffsetEnd - xOffsetStart) / valueRange;
+
+    // The genomic positions of each minor and major tick
+    const [minorTicks, majorTicks] = getTicks(minorTick, majorTick, valueStart, valueEnd, endTicks);
+
+    return (
+        <g ref={ref}>
+            <SvgLayout mode="height">
+                <DiagramLabels
+                    majorTicks={majorTicks}
+                    widthScale={widthScale}
+                    {...props}
+                />
+                <DiagramLine
+                    minorTicks={minorTicks}
+                    widthScale={widthScale}
+                    majorTicks={majorTicks}
+                    {...props}
+                />
+            </SvgLayout>
         </g>
     );
 });

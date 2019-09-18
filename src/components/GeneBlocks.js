@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Path from 'svg-path-generator';
 import useDimensions from 'react-use-dimensions';
 
-const Genes = React.forwardRef((props, ref) => {
+const Genes = React.forwardRef(function Genes(props, ref){
     const {
         yOffset,
         genes,
@@ -18,6 +18,11 @@ const Genes = React.forwardRef((props, ref) => {
         ...rest
     } = props;
     const lineHeight = yOffset + (geneHeight / 2);
+    
+    // Don't even render the line if we have no genes
+    if (genes.length === 0)
+        return null;
+    
     return <g ref={ref}>
         {centerLine &&
         <line x1={xOffsetStart} x2={xOffsetEnd} y1={lineHeight} y2={lineHeight} width={widthScale} stroke={'black'}/>}
