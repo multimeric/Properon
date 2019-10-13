@@ -35,6 +35,10 @@ Properon is a free application that runs in your browser is, and can be accessed
      If your region of interest is not on this contig, you'll have to select the right one
     * Finally, input the start and end coordinate in the respective boxes.
       Note, the start coordinate has to be a smaller number than the end coordinate, even if you're interested in something on the reverse strand!
+      
+3. The plot will be generated in the "Plot" section
+4. Click on "Advanced settings to access more detailed plot settings, and tweak them until the diagram is to your liking
+5. Once you have finished customizing the plot, download a copy of the plot using the "Download" button
   
 ## What makes Properon unique?
 
@@ -43,7 +47,7 @@ A number of applications and libraries exist for the creation of gene diagrams.
 Some programs, like [IGV](https://igv.org) are *genome viewers*, that is, they display tracks of features of the genome, such as genes, variants and/or sequencing reads.
 However, genome viewers are generally optimized for genome exploration or analysis, and are not optimized for the creation of clear diagrams.
 
-Other programs, particularly those implementing the [Synthetic Biology Open Language (SBOL)](https://sbolstandard.org/applications/) are designed for the creation of diagrams, but they intentionally [not designed to show positional information](https://github.com/VisBOL/visbol-js/issues/109#issue-441005567).
+Other programs, particularly those implementing the [Synthetic Biology Open Language (SBOL)](https://sbolstandard.org/applications/) are designed for the creation of diagrams, but they intentionally are [not designed to show positional information](https://github.com/VisBOL/visbol-js/issues/109#issue-441005567).
 That is: they do show genomic features in the correct positions relative to each other, but the specification doesn't allow for the display of features *to-scale*, at their precisely correct size and with the exact gaps between features.
 
 Additionally, there are numerous libraries like [dnaplotlib](https://github.com/VoigtLab/dnaplotlib), which generate useful, to-scale diagrams.
