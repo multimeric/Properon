@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/TMiguelT/Properon/static/css/main.2cce8147.chunk.css",
-    "main.js": "/TMiguelT/Properon/static/js/main.f9f24f11.chunk.js",
-    "main.js.map": "/TMiguelT/Properon/static/js/main.f9f24f11.chunk.js.map",
-    "runtime~main.js": "/TMiguelT/Properon/static/js/runtime~main.706cafd1.js",
-    "runtime~main.js.map": "/TMiguelT/Properon/static/js/runtime~main.706cafd1.js.map",
-    "static/js/2.e1f96e3b.chunk.js": "/TMiguelT/Properon/static/js/2.e1f96e3b.chunk.js",
-    "static/js/2.e1f96e3b.chunk.js.map": "/TMiguelT/Properon/static/js/2.e1f96e3b.chunk.js.map",
-    "index.html": "/TMiguelT/Properon/index.html",
-    "precache-manifest.10353c62aae641687594c6ac8f17f317.js": "/TMiguelT/Properon/precache-manifest.10353c62aae641687594c6ac8f17f317.js",
-    "service-worker.js": "/TMiguelT/Properon/service-worker.js",
-    "static/css/main.2cce8147.chunk.css.map": "/TMiguelT/Properon/static/css/main.2cce8147.chunk.css.map"
+    "main.css": "/Properon/static/css/main.2cce8147.chunk.css",
+    "main.js": "/Properon/static/js/main.a03b4661.chunk.js",
+    "main.js.map": "/Properon/static/js/main.a03b4661.chunk.js.map",
+    "runtime~main.js": "/Properon/static/js/runtime~main.348568e2.js",
+    "runtime~main.js.map": "/Properon/static/js/runtime~main.348568e2.js.map",
+    "static/js/2.e1f96e3b.chunk.js": "/Properon/static/js/2.e1f96e3b.chunk.js",
+    "static/js/2.e1f96e3b.chunk.js.map": "/Properon/static/js/2.e1f96e3b.chunk.js.map",
+    "index.html": "/Properon/index.html",
+    "precache-manifest.284a71183f3911255ce5398c04d3e40c.js": "/Properon/precache-manifest.284a71183f3911255ce5398c04d3e40c.js",
+    "service-worker.js": "/Properon/service-worker.js",
+    "static/css/main.2cce8147.chunk.css.map": "/Properon/static/css/main.2cce8147.chunk.css.map"
   }
 }
