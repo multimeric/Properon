@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "42f0f156fa42193b02ef46e3d82527a2",
+    "revision": "70a2872581086a71cbf6a828d2bec9fd",
     "url": "/Properon/index.html"
   },
   {
-    "revision": "f1fbedd209dbafe11f37",
+    "revision": "faa04dc9094a37bca6b6",
     "url": "/Properon/static/css/main.2cce8147.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Properon/static/js/2.e1f96e3b.chunk.js"
   },
   {
-    "revision": "f1fbedd209dbafe11f37",
-    "url": "/Properon/static/js/main.a03b4661.chunk.js"
+    "revision": "faa04dc9094a37bca6b6",
+    "url": "/Properon/static/js/main.162d761c.chunk.js"
   },
   {
     "revision": "65a330eb02930615a421",
