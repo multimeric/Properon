@@ -1,1 +1,177 @@
-<svg height="476.4697265625" width="722.65625" style="width: 800px;"><g><g><g><g class="tickLabels"><text dominant-baseline="hanging" x="50" y="0" text-anchor="middle" font-size="15">0</text><text dominant-baseline="hanging" x="750.0000000000001" y="0" text-anchor="middle" font-size="15">5000</text><text dominant-baseline="hanging" x="50" y="0" text-anchor="middle" font-size="15">0</text><text dominant-baseline="hanging" x="190" y="0" text-anchor="middle" font-size="15">1000</text><text dominant-baseline="hanging" x="330" y="0" text-anchor="middle" font-size="15">2000</text><text dominant-baseline="hanging" x="470.00000000000006" y="0" text-anchor="middle" font-size="15">3000</text><text dominant-baseline="hanging" x="610" y="0" text-anchor="middle" font-size="15">4000</text><text dominant-baseline="hanging" x="750.0000000000001" y="0" text-anchor="middle" font-size="15">5000</text></g><g class="scale"><line class="scale-line" stroke-width="2" stroke="black" x1="50" x2="750" y1="30.015625" y2="30.015625"></line><g class="minorTicks"><line class="scale-minor-tick" x1="64" x2="64" y1="25.015625" y2="35.015625" stroke="black" stroke-width="1"></line><line class="scale-minor-tick" x1="78" x2="78" y1="25.015625" y2="35.015625" stroke="black" stroke-width="1"></line><line class="scale-minor-tick" x1="92" x2="92" y1="25.015625" y2="35.015625" stroke="black" stroke-width="1"></line><line class="scale-minor-tick" x1="106" x2="106" y1="25.015625" y2="35.015625" stroke="black" stroke-width="1"></line><line class="scale-minor-tick" x1="120" x2="120" y1="25.015625" y2="35.015625" stroke="black" stroke-width="1"></line><line class="scale-minor-tick" x1="134" x2="134" y1="25.015625" y2="35.015625" stroke="black" stroke-width="1"></line><line class="scale-minor-tick" x1="148" x2="148" y1="25.015625" y2="35.015625" stroke="black" stroke-width="1"></line><line class="scale-minor-tick" x1="162" x2="162" y1="25.015625" y2="35.015625" stroke="black" stroke-width="1"></line><line class="scale-minor-tick" x1="176" x2="176" y1="25.015625" y2="35.015625" stroke="black" stroke-width="1"></line><line class="scale-minor-tick" x1="204.00000000000003" x2="204.00000000000003" y1="25.015625" y2="35.015625" stroke="black" stroke-width="1"></line><line class="scale-minor-tick" x1="218.00000000000003" x2="218.00000000000003" y1="25.015625" y2="35.015625" stroke="black" stroke-width="1"></line><line class="scale-minor-tick" x1="232.00000000000003" x2="232.00000000000003" y1="25.015625" y2="35.015625" stroke="black" stroke-width="1"></line><line class="scale-minor-tick" x1="246.00000000000003" x2="246.00000000000003" y1="25.015625" y2="35.015625" stroke="black" stroke-width="1"></line><line class="scale-minor-tick" x1="260" x2="260" y1="25.015625" y2="35.015625" stroke="black" stroke-width="1"></line><line class="scale-minor-tick" x1="274" x2="274" y1="25.015625" y2="35.015625" stroke="black" stroke-width="1"></line><line class="scale-minor-tick" x1="288" x2="288" y1="25.015625" y2="35.015625" stroke="black" stroke-width="1"></line><line class="scale-minor-tick" x1="302" x2="302" y1="25.015625" y2="35.015625" stroke="black" stroke-width="1"></line><line class="scale-minor-tick" x1="316" x2="316" y1="25.015625" y2="35.015625" stroke="black" stroke-width="1"></line><line class="scale-minor-tick" x1="344" x2="344" y1="25.015625" y2="35.015625" stroke="black" stroke-width="1"></line><line class="scale-minor-tick" x1="358.00000000000006" x2="358.00000000000006" y1="25.015625" y2="35.015625" stroke="black" stroke-width="1"></line><line class="scale-minor-tick" x1="372.00000000000006" x2="372.00000000000006" y1="25.015625" y2="35.015625" stroke="black" stroke-width="1"></line><line class="scale-minor-tick" x1="386.00000000000006" x2="386.00000000000006" y1="25.015625" y2="35.015625" stroke="black" stroke-width="1"></line><line class="scale-minor-tick" x1="400.00000000000006" x2="400.00000000000006" y1="25.015625" y2="35.015625" stroke="black" stroke-width="1"></line><line class="scale-minor-tick" x1="414.00000000000006" x2="414.00000000000006" y1="25.015625" y2="35.015625" stroke="black" stroke-width="1"></line><line class="scale-minor-tick" x1="428.00000000000006" x2="428.00000000000006" y1="25.015625" y2="35.015625" stroke="black" stroke-width="1"></line><line class="scale-minor-tick" x1="442.00000000000006" x2="442.00000000000006" y1="25.015625" y2="35.015625" stroke="black" stroke-width="1"></line><line class="scale-minor-tick" x1="456.00000000000006" x2="456.00000000000006" y1="25.015625" y2="35.015625" stroke="black" stroke-width="1"></line><line class="scale-minor-tick" x1="484.00000000000006" x2="484.00000000000006" y1="25.015625" y2="35.015625" stroke="black" stroke-width="1"></line><line class="scale-minor-tick" x1="498.00000000000006" x2="498.00000000000006" y1="25.015625" y2="35.015625" stroke="black" stroke-width="1"></line><line class="scale-minor-tick" x1="512" x2="512" y1="25.015625" y2="35.015625" stroke="black" stroke-width="1"></line><line class="scale-minor-tick" x1="526" x2="526" y1="25.015625" y2="35.015625" stroke="black" stroke-width="1"></line><line class="scale-minor-tick" x1="540" x2="540" y1="25.015625" y2="35.015625" stroke="black" stroke-width="1"></line><line class="scale-minor-tick" x1="554" x2="554" y1="25.015625" y2="35.015625" stroke="black" stroke-width="1"></line><line class="scale-minor-tick" x1="568" x2="568" y1="25.015625" y2="35.015625" stroke="black" stroke-width="1"></line><line class="scale-minor-tick" x1="582" x2="582" y1="25.015625" y2="35.015625" stroke="black" stroke-width="1"></line><line class="scale-minor-tick" x1="596" x2="596" y1="25.015625" y2="35.015625" stroke="black" stroke-width="1"></line><line class="scale-minor-tick" x1="624" x2="624" y1="25.015625" y2="35.015625" stroke="black" stroke-width="1"></line><line class="scale-minor-tick" x1="638" x2="638" y1="25.015625" y2="35.015625" stroke="black" stroke-width="1"></line><line class="scale-minor-tick" x1="652.0000000000001" x2="652.0000000000001" y1="25.015625" y2="35.015625" stroke="black" stroke-width="1"></line><line class="scale-minor-tick" x1="666.0000000000001" x2="666.0000000000001" y1="25.015625" y2="35.015625" stroke="black" stroke-width="1"></line><line class="scale-minor-tick" x1="680.0000000000001" x2="680.0000000000001" y1="25.015625" y2="35.015625" stroke="black" stroke-width="1"></line><line class="scale-minor-tick" x1="694.0000000000001" x2="694.0000000000001" y1="25.015625" y2="35.015625" stroke="black" stroke-width="1"></line><line class="scale-minor-tick" x1="708.0000000000001" x2="708.0000000000001" y1="25.015625" y2="35.015625" stroke="black" stroke-width="1"></line><line class="scale-minor-tick" x1="722.0000000000001" x2="722.0000000000001" y1="25.015625" y2="35.015625" stroke="black" stroke-width="1"></line><line class="scale-minor-tick" x1="736.0000000000001" x2="736.0000000000001" y1="25.015625" y2="35.015625" stroke="black" stroke-width="1"></line></g><g class="majorTicks"><line class="scale-minor-tick" x1="50" x2="50" y1="20.015625" y2="40.015625" stroke="black" stroke-width="2"></line><line class="scale-minor-tick" x1="750.0000000000001" x2="750.0000000000001" y1="20.015625" y2="40.015625" stroke="black" stroke-width="2"></line><line class="scale-minor-tick" x1="50" x2="50" y1="20.015625" y2="40.015625" stroke="black" stroke-width="2"></line><line class="scale-minor-tick" x1="190" x2="190" y1="20.015625" y2="40.015625" stroke="black" stroke-width="2"></line><line class="scale-minor-tick" x1="330" x2="330" y1="20.015625" y2="40.015625" stroke="black" stroke-width="2"></line><line class="scale-minor-tick" x1="470.00000000000006" x2="470.00000000000006" y1="20.015625" y2="40.015625" stroke="black" stroke-width="2"></line><line class="scale-minor-tick" x1="610" x2="610" y1="20.015625" y2="40.015625" stroke="black" stroke-width="2"></line><line class="scale-minor-tick" x1="750.0000000000001" x2="750.0000000000001" y1="20.015625" y2="40.015625" stroke="black" stroke-width="2"></line></g></g></g></g><g><line x1="50" x2="750" y1="93.21875" y2="93.21875" stroke-width="1px" stroke="black"></line><g><path d="M 67.5 43.21875 L 194.76000000000002 43.21875 L 264.76 93.21875 L 194.76000000000002 143.21875 L 67.5 143.21875 Z" fill="#D00E14" stroke-width="2" stroke="black" transform=""></path><text x="166.13" y="156.21875" text-anchor="end" fill="black" font-size="20" transform="rotate(315, 166.13, 156.21875)">SALA_RS00010</text></g></g><g><line x1="50" x2="750" y1="308.2334899902344" y2="308.2334899902344" stroke-width="1px" stroke="black"></line><g><path d="M 285.48 258.2334899902344 L 309.42 258.2334899902344 L 379.42 308.2334899902344 L 309.42 358.2334899902344 L 285.48 358.2334899902344 Z" fill="#06AED5" stroke-width="2" stroke="black" transform="rotate(180, 332.45000000000005, 308.2334899902344)"></path><text x="332.45000000000005" y="371.2413024902344" text-anchor="end" fill="black" font-size="20" transform="rotate(315, 332.45000000000005, 371.2413024902344)">SALA_RS00015</text></g><g><path d="M 406.86 258.2334899902344 L 429.12000000000006 258.2334899902344 L 499.12000000000006 308.2334899902344 L 429.12000000000006 358.2334899902344 L 406.86 358.2334899902344 Z" fill="#086788" stroke-width="2" stroke="black" transform="rotate(180, 452.99000000000007, 308.2334899902344)"></path><text x="452.99000000000007" y="371.2413024902344" text-anchor="end" fill="black" font-size="20" transform="rotate(315, 452.99000000000007, 371.2413024902344)">SALA_RS00020</text></g><g><path d="M 498.70000000000005 258.2334899902344 L 674.2600000000001 258.2334899902344 L 744.2600000000001 308.2334899902344 L 674.2600000000001 358.2334899902344 L 498.70000000000005 358.2334899902344 Z" fill="#F0C808" stroke-width="2" stroke="black" transform="rotate(180, 621.48, 308.2334899902344)"></path><text x="621.48" y="371.2413024902344" text-anchor="end" fill="black" font-size="20" transform="rotate(315, 621.48, 371.2413024902344)">SALA_RS00025</text></g></g></g></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<svg height="476.4697265625" width="722.65625" style="width: 800px;" version="1.1">
+    <g>
+        <g>
+            <g>
+                <g class="tickLabels">
+                    <text dominant-baseline="hanging" x="50" y="0" text-anchor="middle" font-size="15">0</text>
+                    <text dominant-baseline="hanging" x="750.0000000000001" y="0" text-anchor="middle" font-size="15">
+                        5000
+                    </text>
+                    <text dominant-baseline="hanging" x="50" y="0" text-anchor="middle" font-size="15">0</text>
+                    <text dominant-baseline="hanging" x="190" y="0" text-anchor="middle" font-size="15">1000</text>
+                    <text dominant-baseline="hanging" x="330" y="0" text-anchor="middle" font-size="15">2000</text>
+                    <text dominant-baseline="hanging" x="470.00000000000006" y="0" text-anchor="middle" font-size="15">
+                        3000
+                    </text>
+                    <text dominant-baseline="hanging" x="610" y="0" text-anchor="middle" font-size="15">4000</text>
+                    <text dominant-baseline="hanging" x="750.0000000000001" y="0" text-anchor="middle" font-size="15">
+                        5000
+                    </text>
+                </g>
+                <g class="scale">
+                    <line class="scale-line" stroke-width="2" stroke="black" x1="50" x2="750" y1="30.015625"
+                          y2="30.015625"></line>
+                    <g class="minorTicks">
+                        <line class="scale-minor-tick" x1="64" x2="64" y1="25.015625" y2="35.015625" stroke="black"
+                              stroke-width="1"></line>
+                        <line class="scale-minor-tick" x1="78" x2="78" y1="25.015625" y2="35.015625" stroke="black"
+                              stroke-width="1"></line>
+                        <line class="scale-minor-tick" x1="92" x2="92" y1="25.015625" y2="35.015625" stroke="black"
+                              stroke-width="1"></line>
+                        <line class="scale-minor-tick" x1="106" x2="106" y1="25.015625" y2="35.015625" stroke="black"
+                              stroke-width="1"></line>
+                        <line class="scale-minor-tick" x1="120" x2="120" y1="25.015625" y2="35.015625" stroke="black"
+                              stroke-width="1"></line>
+                        <line class="scale-minor-tick" x1="134" x2="134" y1="25.015625" y2="35.015625" stroke="black"
+                              stroke-width="1"></line>
+                        <line class="scale-minor-tick" x1="148" x2="148" y1="25.015625" y2="35.015625" stroke="black"
+                              stroke-width="1"></line>
+                        <line class="scale-minor-tick" x1="162" x2="162" y1="25.015625" y2="35.015625" stroke="black"
+                              stroke-width="1"></line>
+                        <line class="scale-minor-tick" x1="176" x2="176" y1="25.015625" y2="35.015625" stroke="black"
+                              stroke-width="1"></line>
+                        <line class="scale-minor-tick" x1="204.00000000000003" x2="204.00000000000003" y1="25.015625"
+                              y2="35.015625" stroke="black" stroke-width="1"></line>
+                        <line class="scale-minor-tick" x1="218.00000000000003" x2="218.00000000000003" y1="25.015625"
+                              y2="35.015625" stroke="black" stroke-width="1"></line>
+                        <line class="scale-minor-tick" x1="232.00000000000003" x2="232.00000000000003" y1="25.015625"
+                              y2="35.015625" stroke="black" stroke-width="1"></line>
+                        <line class="scale-minor-tick" x1="246.00000000000003" x2="246.00000000000003" y1="25.015625"
+                              y2="35.015625" stroke="black" stroke-width="1"></line>
+                        <line class="scale-minor-tick" x1="260" x2="260" y1="25.015625" y2="35.015625" stroke="black"
+                              stroke-width="1"></line>
+                        <line class="scale-minor-tick" x1="274" x2="274" y1="25.015625" y2="35.015625" stroke="black"
+                              stroke-width="1"></line>
+                        <line class="scale-minor-tick" x1="288" x2="288" y1="25.015625" y2="35.015625" stroke="black"
+                              stroke-width="1"></line>
+                        <line class="scale-minor-tick" x1="302" x2="302" y1="25.015625" y2="35.015625" stroke="black"
+                              stroke-width="1"></line>
+                        <line class="scale-minor-tick" x1="316" x2="316" y1="25.015625" y2="35.015625" stroke="black"
+                              stroke-width="1"></line>
+                        <line class="scale-minor-tick" x1="344" x2="344" y1="25.015625" y2="35.015625" stroke="black"
+                              stroke-width="1"></line>
+                        <line class="scale-minor-tick" x1="358.00000000000006" x2="358.00000000000006" y1="25.015625"
+                              y2="35.015625" stroke="black" stroke-width="1"></line>
+                        <line class="scale-minor-tick" x1="372.00000000000006" x2="372.00000000000006" y1="25.015625"
+                              y2="35.015625" stroke="black" stroke-width="1"></line>
+                        <line class="scale-minor-tick" x1="386.00000000000006" x2="386.00000000000006" y1="25.015625"
+                              y2="35.015625" stroke="black" stroke-width="1"></line>
+                        <line class="scale-minor-tick" x1="400.00000000000006" x2="400.00000000000006" y1="25.015625"
+                              y2="35.015625" stroke="black" stroke-width="1"></line>
+                        <line class="scale-minor-tick" x1="414.00000000000006" x2="414.00000000000006" y1="25.015625"
+                              y2="35.015625" stroke="black" stroke-width="1"></line>
+                        <line class="scale-minor-tick" x1="428.00000000000006" x2="428.00000000000006" y1="25.015625"
+                              y2="35.015625" stroke="black" stroke-width="1"></line>
+                        <line class="scale-minor-tick" x1="442.00000000000006" x2="442.00000000000006" y1="25.015625"
+                              y2="35.015625" stroke="black" stroke-width="1"></line>
+                        <line class="scale-minor-tick" x1="456.00000000000006" x2="456.00000000000006" y1="25.015625"
+                              y2="35.015625" stroke="black" stroke-width="1"></line>
+                        <line class="scale-minor-tick" x1="484.00000000000006" x2="484.00000000000006" y1="25.015625"
+                              y2="35.015625" stroke="black" stroke-width="1"></line>
+                        <line class="scale-minor-tick" x1="498.00000000000006" x2="498.00000000000006" y1="25.015625"
+                              y2="35.015625" stroke="black" stroke-width="1"></line>
+                        <line class="scale-minor-tick" x1="512" x2="512" y1="25.015625" y2="35.015625" stroke="black"
+                              stroke-width="1"></line>
+                        <line class="scale-minor-tick" x1="526" x2="526" y1="25.015625" y2="35.015625" stroke="black"
+                              stroke-width="1"></line>
+                        <line class="scale-minor-tick" x1="540" x2="540" y1="25.015625" y2="35.015625" stroke="black"
+                              stroke-width="1"></line>
+                        <line class="scale-minor-tick" x1="554" x2="554" y1="25.015625" y2="35.015625" stroke="black"
+                              stroke-width="1"></line>
+                        <line class="scale-minor-tick" x1="568" x2="568" y1="25.015625" y2="35.015625" stroke="black"
+                              stroke-width="1"></line>
+                        <line class="scale-minor-tick" x1="582" x2="582" y1="25.015625" y2="35.015625" stroke="black"
+                              stroke-width="1"></line>
+                        <line class="scale-minor-tick" x1="596" x2="596" y1="25.015625" y2="35.015625" stroke="black"
+                              stroke-width="1"></line>
+                        <line class="scale-minor-tick" x1="624" x2="624" y1="25.015625" y2="35.015625" stroke="black"
+                              stroke-width="1"></line>
+                        <line class="scale-minor-tick" x1="638" x2="638" y1="25.015625" y2="35.015625" stroke="black"
+                              stroke-width="1"></line>
+                        <line class="scale-minor-tick" x1="652.0000000000001" x2="652.0000000000001" y1="25.015625"
+                              y2="35.015625" stroke="black" stroke-width="1"></line>
+                        <line class="scale-minor-tick" x1="666.0000000000001" x2="666.0000000000001" y1="25.015625"
+                              y2="35.015625" stroke="black" stroke-width="1"></line>
+                        <line class="scale-minor-tick" x1="680.0000000000001" x2="680.0000000000001" y1="25.015625"
+                              y2="35.015625" stroke="black" stroke-width="1"></line>
+                        <line class="scale-minor-tick" x1="694.0000000000001" x2="694.0000000000001" y1="25.015625"
+                              y2="35.015625" stroke="black" stroke-width="1"></line>
+                        <line class="scale-minor-tick" x1="708.0000000000001" x2="708.0000000000001" y1="25.015625"
+                              y2="35.015625" stroke="black" stroke-width="1"></line>
+                        <line class="scale-minor-tick" x1="722.0000000000001" x2="722.0000000000001" y1="25.015625"
+                              y2="35.015625" stroke="black" stroke-width="1"></line>
+                        <line class="scale-minor-tick" x1="736.0000000000001" x2="736.0000000000001" y1="25.015625"
+                              y2="35.015625" stroke="black" stroke-width="1"></line>
+                    </g>
+                    <g class="majorTicks">
+                        <line class="scale-minor-tick" x1="50" x2="50" y1="20.015625" y2="40.015625" stroke="black"
+                              stroke-width="2"></line>
+                        <line class="scale-minor-tick" x1="750.0000000000001" x2="750.0000000000001" y1="20.015625"
+                              y2="40.015625" stroke="black" stroke-width="2"></line>
+                        <line class="scale-minor-tick" x1="50" x2="50" y1="20.015625" y2="40.015625" stroke="black"
+                              stroke-width="2"></line>
+                        <line class="scale-minor-tick" x1="190" x2="190" y1="20.015625" y2="40.015625" stroke="black"
+                              stroke-width="2"></line>
+                        <line class="scale-minor-tick" x1="330" x2="330" y1="20.015625" y2="40.015625" stroke="black"
+                              stroke-width="2"></line>
+                        <line class="scale-minor-tick" x1="470.00000000000006" x2="470.00000000000006" y1="20.015625"
+                              y2="40.015625" stroke="black" stroke-width="2"></line>
+                        <line class="scale-minor-tick" x1="610" x2="610" y1="20.015625" y2="40.015625" stroke="black"
+                              stroke-width="2"></line>
+                        <line class="scale-minor-tick" x1="750.0000000000001" x2="750.0000000000001" y1="20.015625"
+                              y2="40.015625" stroke="black" stroke-width="2"></line>
+                    </g>
+                </g>
+            </g>
+        </g>
+        <g>
+            <line x1="50" x2="750" y1="93.21875" y2="93.21875" stroke-width="1px" stroke="black"></line>
+            <g>
+                <path d="M 67.5 43.21875 L 194.76000000000002 43.21875 L 264.76 93.21875 L 194.76000000000002 143.21875 L 67.5 143.21875 Z"
+                      fill="#D00E14" stroke-width="2" stroke="black" transform=""></path>
+                <text x="166.13" y="156.21875" text-anchor="end" fill="black" font-size="20"
+                      transform="rotate(315, 166.13, 156.21875)">SALA_RS00010
+                </text>
+            </g>
+        </g>
+        <g>
+            <line x1="50" x2="750" y1="308.2334899902344" y2="308.2334899902344" stroke-width="1px"
+                  stroke="black"></line>
+            <g>
+                <path d="M 285.48 258.2334899902344 L 309.42 258.2334899902344 L 379.42 308.2334899902344 L 309.42 358.2334899902344 L 285.48 358.2334899902344 Z"
+                      fill="#06AED5" stroke-width="2" stroke="black"
+                      transform="rotate(180, 332.45000000000005, 308.2334899902344)"></path>
+                <text x="332.45000000000005" y="371.2413024902344" text-anchor="end" fill="black" font-size="20"
+                      transform="rotate(315, 332.45000000000005, 371.2413024902344)">SALA_RS00015
+                </text>
+            </g>
+            <g>
+                <path d="M 406.86 258.2334899902344 L 429.12000000000006 258.2334899902344 L 499.12000000000006 308.2334899902344 L 429.12000000000006 358.2334899902344 L 406.86 358.2334899902344 Z"
+                      fill="#086788" stroke-width="2" stroke="black"
+                      transform="rotate(180, 452.99000000000007, 308.2334899902344)"></path>
+                <text x="452.99000000000007" y="371.2413024902344" text-anchor="end" fill="black" font-size="20"
+                      transform="rotate(315, 452.99000000000007, 371.2413024902344)">SALA_RS00020
+                </text>
+            </g>
+            <g>
+                <path d="M 498.70000000000005 258.2334899902344 L 674.2600000000001 258.2334899902344 L 744.2600000000001 308.2334899902344 L 674.2600000000001 358.2334899902344 L 498.70000000000005 358.2334899902344 Z"
+                      fill="#F0C808" stroke-width="2" stroke="black"
+                      transform="rotate(180, 621.48, 308.2334899902344)"></path>
+                <text x="621.48" y="371.2413024902344" text-anchor="end" fill="black" font-size="20"
+                      transform="rotate(315, 621.48, 371.2413024902344)">SALA_RS00025
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>
