@@ -25,7 +25,7 @@ const Genes = React.forwardRef(function Genes(props, ref){
     
     return <g ref={ref}>
         {centerLine &&
-        <line x1={xOffsetStart} x2={xOffsetEnd} y1={lineHeight} y2={lineHeight} width={widthScale} stroke={'black'}/>}
+        <line x1={xOffsetStart} x2={xOffsetEnd} y1={lineHeight} y2={lineHeight} strokeWidth={"1px"} stroke={'black'}/>}
         {genes.map(gene => {
             const geneLength = gene.end - gene.start;
 
