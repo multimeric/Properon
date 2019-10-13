@@ -1,68 +1,74 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Properon
 
-## Available Scripts
+A free and open source web application for the generation of publication-quality gene diagrams
 
-In the project directory, you can run:
+![](docs/diagram_example.svg)
 
-### `npm start`
+## Key Features
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+* Generates clear and readable gene block diagrams
+* Download generated diagrams from your browser
+* Creates diagrams in the SVG format, meaning you can expand their size infinitely! No more blurry poster diagrams!
+* Every aspect of the diagram, including text and colour can be tweaked in an SVG editor like [Inkscape](https://inkscape.org/)
+* Runs in your browser
+* Free and open source
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Usage
 
-### `npm test`
+Properon is a free application that runs in your browser is, and can be accessed at: https://tmiguelt.github.io/Properon/.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Before you use Properon, you'll need to have:
 
-### `npm run build`
+    * A GFF file of the organism you wish to show in the diagram.
+    Most annotation databases will provide these.
+    If you are familiar with NCBI, you can find a GFF by searching in the *Genome* database.
+    For example, for a human GFF, browse to https://www.ncbi.nlm.nih.gov/genome/51, and click the following link:
+    ![](docs/ncbi_gff.png)
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    * A region of interest to display.
+      If you work with bacteria, you can find some predicted operons using [ProOpDb](http://biocomputo2.ibt.unam.mx/OperonPredictor/).  
+      You'll need to note down the start and end position that you are interested in, as well as the contig (if your organism has chromosomes or plasmids)
+  
+2. Next, all you need to do is input this information into Properon:
+    * Click "Upload GFF" and select the GFF file you found in step 1
+    * A contig will be automatically selected.
+     If your region of interest is not on this contig, you'll have to select the right one
+    * Finally, input the start and end coordinate in the respective boxes.
+      Note, the start coordinate has to be a smaller number than the end coordinate, even if you're interested in something on the reverse strand!
+  
+## What makes Properon unique?
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+A number of applications and libraries exist for the creation of gene diagrams.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Some programs, like [IGV](https://igv.org) are *genome viewers*, that is, they display tracks of features of the genome, such as genes, variants and/or sequencing reads.
+However, genome viewers are generally optimized for genome exploration or analysis, and are not optimized for the creation of clear diagrams.
 
-### `npm run eject`
+Other programs, particularly those implementing the [Synthetic Biology Open Language (SBOL)](https://sbolstandard.org/applications/) are designed for the creation of diagrams, but they intentionally [not designed to show positional information](https://github.com/VisBOL/visbol-js/issues/109#issue-441005567).
+That is: they do show genomic features in the correct positions relative to each other, but the specification doesn't allow for the display of features *to-scale*, at their precisely correct size and with the exact gaps between features.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Additionally, there are numerous libraries like [dnaplotlib](https://github.com/VoigtLab/dnaplotlib), which generate useful, to-scale diagrams.
+However, these libraries generally require the user to understand their programming language in order to generate diagrams.
+This is not always a reasonable assumption.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Finally, there exist commercial diagram generators, such as [SnapGene](https://www.snapgene.com/).
+Some of these fulfill all of Properon's goals, but they are not free to use or modify (open source).
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Roadmap
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Properon is still in beta. 
+I intend to add the following features and bugfixes before its full release:
 
-## Learn More
+### Features
+* [ ] Include stylesheet and font in SVG download, ensuring the SVG is identical in all viewers
+* [ ] Allow the gene positions, names and colours to be edited in the application
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Bugs
+* [ ] Add padding to prevent the stroke from clipping when there is no scale
+* [ ] Fix situations where the page can get "stuck", and not re-render changes to the * diagram until you scroll the page, or change a setting
+* [ ] Fix the gene labels being cut off on noncompliant SVG viewers, such as Microsoft Office
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Feedback
 
-### Code Splitting
+If you have a feature request or a bug report, please make a GitHub issue [here](https://github.com/TMiguelT/Properon/issues).
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+All other enquiries can be directed to ttmigueltt@gmail.com.
