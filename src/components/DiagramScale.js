@@ -81,8 +81,6 @@ const DiagramLine = React.forwardRef(function DiagramLine(props, ref) {
                 y1={baseline}
                 y2={baseline}
             />
-            }
-
             <g className="minorTicks">
                 {
                     minorTicks.map(tick => {
