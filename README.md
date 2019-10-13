@@ -2,7 +2,7 @@
 
 A free and open source web application for the generation of publication-quality gene diagrams
 
-![](docs/diagram_example.svg)
+<img src="docs/diagram_example.svg"/>
 
 ## Key Features
 
