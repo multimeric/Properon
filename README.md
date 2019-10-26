@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/188063156.svg)](https://zenodo.org/badge/latestdoi/188063156)
+
 # Properon
 
 A free and open source web application for the generation of publication-quality gene diagrams
