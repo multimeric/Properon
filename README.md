@@ -17,7 +17,7 @@ A free and open source web application for the generation of publication-quality
 
 ## Usage
 
-Properon is a free application that runs in your browser is, and can be accessed at: https://tmiguelt.github.io/Properon/.
+Properon is a free application that runs in your browser is, and can be accessed at: https://multimeric.github.io/Properon/.
 
 1. Before you use Properon, you'll need to have:
 
@@ -75,6 +75,6 @@ I intend to add the following features and bugfixes before its full release:
 
 ## Feedback
 
-If you have a feature request or a bug report, please make a GitHub issue [here](https://github.com/TMiguelT/Properon/issues).
+If you have a feature request or a bug report, please make a GitHub issue [here](https://github.com/multimeric/Properon/issues).
 
-All other enquiries can be directed to ttmigueltt@gmail.com.
+All other enquiries can be directed to michael.r.milton@gmail.com.
