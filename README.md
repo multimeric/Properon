@@ -17,29 +17,29 @@ A free and open source web application for the generation of publication-quality
 
 ## Usage
 
-Properon is a free application that runs in your browser is, and can be accessed at: https://multimeric.github.io/Properon/.
+Properon is a free application that runs in your browser is, and can be accessed at: **https://multimeric.github.io/Properon/**.
 
 1. Before you use Properon, you'll need to have:
 
-    * A GFF file of the organism you wish to show in the diagram.
+    a. A GFF file of the organism you wish to show in the diagram.
     Most annotation databases will provide these.
     If you are familiar with NCBI, you can find a GFF by searching in the *Genome* database.
-    For example, for a human GFF, browse to https://www.ncbi.nlm.nih.gov/genome/51, and click the following link:
-    ![](docs/ncbi_gff.png)
+    For example, for a tuberculosis GFF:
 
-    * A region of interest to display.
-      If you work with bacteria, you can find some predicted operons using [ProOpDb](http://biocomputo2.ibt.unam.mx/OperonPredictor/).  
-      You'll need to note down the start and end position that you are interested in, as well as the contig (if your organism has chromosomes or plasmids)
-  
-2. Next, all you need to do is input this information into Properon:
-    * Click "Upload GFF" and select the GFF file you found in step 1
-    * A contig will be automatically selected.
-     If your region of interest is not on this contig, you'll have to select the right one
-    * Finally, input the start and end coordinate in the respective boxes.
-      Note, the start coordinate has to be a smaller number than the end coordinate, even if you're interested in something on the reverse strand!
-      
+      1. Browse to <https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000195955.2/>
+      2. Click the "FTP" link
+      3. Click the file that ends in `.gff.gz`
+      4. Unzip the file, resulting in a `.gff`
+
+    b. A region of interest to display.  If you work with bacteria, you can find some predicted operons using [ProOpDb](https://biocomputo.ibt.unam.mx/proopdb/).  You'll need to note down the start and end position that you are interested in, as well as the contig (if your organism has chromosomes or plasmids)
+2. Next, input this information into Properon:
+
+    1. Click "Upload GFF" and select the GFF file you found in step 1a.
+    2. A contig will be automatically selected.  If your region of interest is not on this contig, you'll have to select the right one
+    3. Finally, input the start and end coordinate in the respective boxes.  Note, the start coordinate has to be a smaller number than the end coordinate, even if you're interested in something on the reverse strand!
+
 3. The plot will be generated in the "Plot" section
-4. Click on "Advanced settings to access more detailed plot settings, and tweak them until the diagram is to your liking
+4. Click on "Advanced settings" to access more detailed plot settings, and tweak them until the diagram is to your liking
 5. Once you have finished customizing the plot, download a copy of the plot using the "Download" button
   
 ## What makes Properon unique?
@@ -70,7 +70,7 @@ I intend to add the following features and bugfixes before its full release:
 
 ### Bugs
 * [ ] Add padding to prevent the stroke from clipping when there is no scale
-* [ ] Fix situations where the page can get "stuck", and not re-render changes to the * diagram until you scroll the page, or change a setting
+* [ ] Fix situations where the page can get "stuck", and not re-render changes to the diagram until you scroll the page, or change a setting
 * [ ] Fix the gene labels being cut off on noncompliant SVG viewers, such as Microsoft Office
 
 ## Feedback
